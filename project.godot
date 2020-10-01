@@ -9,20 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "PlayerPhysic",
+"base": "KinematicBody2D",
+"class": "Player",
 "language": "GDScript",
-"path": "res://src/player/player_behaviour.gd"
+"path": "res://src/player/player.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/state_machine/state_machine.gd"
 } ]
 _global_script_class_icons={
-"PlayerPhysic": ""
+"Player": "",
+"StateMachine": ""
 }
 
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://scenes/player_scene.tscn"
-config/icon="res://sprites/icon.png"
+run/main_scene="res://scene/player_scene.tscn"
+config/icon="res://asset/sprite/icon.png"
 
 [display]
 

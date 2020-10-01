@@ -1,36 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sprites/player/player_idle.png" type="Texture" id=1]
-[ext_resource path="res://sprites/icon.png" type="Texture" id=2]
-[ext_resource path="res://src/player/player_behaviour.gd" type="Script" id=3]
+[ext_resource path="res://prefab/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/sprite/icon.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 4.5
-height = 19.75
-
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [node name="PlayerScene" type="Node"]
 
-[node name="Player" type="Node" parent="."]
-
-[node name="PlayerBehaviour" type="KinematicBody2D" parent="Player"]
-position = Vector2( 600, 144 )
-scale = Vector2( 2, 2 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-spd = 300
-
-[node name="Sprite" type="Sprite" parent="Player/PlayerBehaviour"]
-texture = ExtResource( 1 )
-hframes = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerBehaviour"]
-position = Vector2( 2.375, 4.5 )
-shape = SubResource( 9 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Grounds" type="Node" parent="."]
 
@@ -42,10 +20,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground2" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 224, 416 )
@@ -55,10 +33,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground2"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground2"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground3" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 800, 480 )
@@ -68,10 +46,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground3"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground3"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground4" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 288, 416 )
@@ -81,10 +59,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground4"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground4"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground5" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 352, 416 )
@@ -94,10 +72,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground5"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground5"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground6" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 416, 416 )
@@ -107,10 +85,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground6"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground6"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground7" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 480, 416 )
@@ -120,10 +98,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground7"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground7"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground8" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 480, 480 )
@@ -133,10 +111,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground8"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground8"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground9" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 736, 480 )
@@ -146,10 +124,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground9"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground9"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground10" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 672, 480 )
@@ -159,10 +137,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground10"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground10"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground11" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 544, 480 )
@@ -172,10 +150,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground11"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground11"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground12" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 160, 416 )
@@ -185,10 +163,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground12"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground12"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground13" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 864, 480 )
@@ -198,10 +176,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground13"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground13"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground14" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 96, 416 )
@@ -211,10 +189,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground14"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground14"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground15" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 992, 480 )
@@ -224,10 +202,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground15"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground15"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground16" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 32, 416 )
@@ -237,10 +215,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground16"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground16"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Ground17" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 928, 480 )
@@ -250,7 +228,93 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Grounds/Ground17"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grounds/Ground17"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Walls"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 160, 352 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+shape = SubResource( 1 )
+
+[node name="Wall2" type="StaticBody2D" parent="Walls"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 160, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall2"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+shape = SubResource( 1 )
+
+[node name="Wall3" type="StaticBody2D" parent="Walls"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 160, 288 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall3"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+shape = SubResource( 1 )
+
+[node name="Wall4" type="StaticBody2D" parent="Walls"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 800, 416 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall4"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+shape = SubResource( 1 )
+
+[node name="Wall5" type="StaticBody2D" parent="Walls"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 800, 288 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall5"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall5"]
+shape = SubResource( 1 )
+
+[node name="Wall6" type="StaticBody2D" parent="Walls"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 800, 352 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall6"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall6"]
+shape = SubResource( 1 )
