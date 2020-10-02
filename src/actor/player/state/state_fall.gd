@@ -18,8 +18,6 @@ func on_exit():
 
 # state logic
 func process(delta):
-	var player_velocity = player.get_velocity()
-
 	if player.is_on_floor():
 		state_machine.change_state(state_idle)
 
@@ -30,15 +28,12 @@ func process(delta):
 		player.flip()
 
 func physics_process(delta):
-	var player_velocity = player.get_velocity()
-	var player_speed = player.get_speed()
-
 	if Input.is_action_pressed("ui_right"):
-		player.set_velocity(Vector2(player.get_speed(), player_velocity.y))
+		player.velocity = Vector2(player.speed, player.velocity.y)
 	elif Input.is_action_pressed("ui_left"):
-		player.set_velocity(Vector2(-player.get_speed(), player_velocity.y))
+		player.velocity = Vector2(-player.speed, player.velocity.y)
 	else:
-		player.set_velocity(Vector2(0, player_velocity.y))
+		player.velocity = Vector2(0, player.velocity.y)
 
 	player.compute_gravity()
 	player.compute_velocity()

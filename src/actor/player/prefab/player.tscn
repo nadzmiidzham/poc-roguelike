@@ -86,12 +86,11 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-_gravity = 15
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 13 )
 animation = "idle"
-frame = 1
+frame = 5
 playing = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
