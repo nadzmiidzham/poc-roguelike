@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall_slide.png-1927d802282b4745653a52df1cca4c2d.stex"
+path="res://.import/player_jump.png-a5bbf054cdb852ef90011bf6880479ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/sprites/wall_slide.png"
-dest_files=[ "res://.import/wall_slide.png-1927d802282b4745653a52df1cca4c2d.stex" ]
+source_file="res://src/sprite/player/player_jump.png"
+dest_files=[ "res://.import/player_jump.png-a5bbf054cdb852ef90011bf6880479ba.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

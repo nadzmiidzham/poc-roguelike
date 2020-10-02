@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://src/player/player.gd"
+"path": "res://src/actor/player/player.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://src/state_machine/state_machine.gd"
+"path": "res://src/common/state_machine.gd"
 } ]
 _global_script_class_icons={
 "Player": "",
@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://scene/player_scene.tscn"
+run/main_scene="res://src/scene/player_scene.tscn"
 config/icon="res://asset/sprite/icon.png"
 
 [display]

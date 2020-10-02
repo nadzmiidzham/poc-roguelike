@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://prefab/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://asset/sprite/icon.png" type="Texture" id=3]
+[ext_resource path="res://src/actor/player/prefab/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/sprite/icon.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )

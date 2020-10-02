@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall_slide.png-e5dc1510a4e86453e5094edbcefb38cd.stex"
+path="res://.import/player_idle.png-9a0f840f1a65fc0d90ce67435f294ca1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/player/wall_slide.png"
-dest_files=[ "res://.import/wall_slide.png-e5dc1510a4e86453e5094edbcefb38cd.stex" ]
+source_file="res://src/sprite/player/player_idle.png"
+dest_files=[ "res://.import/player_idle.png-9a0f840f1a65fc0d90ce67435f294ca1.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
