@@ -29,8 +29,7 @@ func change_state(new_state):
 	if _state != new_state:
 		if _state != null:
 			_state.on_exit()
-		_state = new_state
 
-		# Give the new state a reference to this state machine script
-		_state.state_machine = self
+		_state = new_state
+		_state.state_machine = self # Give the new state a reference to this state machine script
 		_state.on_enter()
