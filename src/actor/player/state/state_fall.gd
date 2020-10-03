@@ -18,7 +18,7 @@ func on_exit() -> void:
 
 
 # state logic
-func process(delta) -> void:
+func process(_delta) -> void:
 	if player.is_on_floor():
 		state_machine.change_state(state_idle)
 
@@ -28,7 +28,7 @@ func process(delta) -> void:
 	if player.is_facing_right && Input.is_action_pressed("move_left"):
 		player.flip()
 
-func physics_process(delta) -> void:
+func physics_process(_delta) -> void:
 	player.move()
 	player.compute_gravity()
 	player.compute_velocity()

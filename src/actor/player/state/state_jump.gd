@@ -19,11 +19,11 @@ func on_exit() -> void:
 
 
 # state logic
-func process(delta) -> void:
+func process(_delta) -> void:
 	if _is_jump_finished:
 		state_machine.change_state(state_fall)
 
-func physics_process(delta) -> void:
+func physics_process(_delta) -> void:
 	if player.is_on_floor():
 		player.velocity.y = -player.jump_force
 	if player.velocity.y > 0:

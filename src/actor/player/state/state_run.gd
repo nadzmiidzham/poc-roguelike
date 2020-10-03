@@ -19,14 +19,14 @@ func on_exit() -> void:
 
 
 # state logic
-func process(delta) -> void:
+func process(_delta) -> void:
 	# flip sprite
 	if !player.is_facing_right && Input.is_action_pressed("move_right"):
 		player.flip()
 	if player.is_facing_right && Input.is_action_pressed("move_left"):
 		player.flip()
 
-func physics_process(delta) -> void:
+func physics_process(_delta) -> void:
 	if (player.velocity.x == 0) && !(Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left")):
 		state_machine.change_state(state_idle)
 	if !player.is_on_floor():

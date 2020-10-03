@@ -19,7 +19,7 @@ func on_exit() -> void:
 
 
 # state logic
-func process(delta) -> void:
+func process(_delta) -> void:
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 		state_machine.change_state(state_run)
 	if Input.is_action_just_pressed("jump"):
