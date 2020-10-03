@@ -1,3 +1,4 @@
+class_name StateRun
 extends Node
 
 var state_machine: StateMachine
@@ -18,11 +19,6 @@ func on_exit():
 
 # state logic
 func process(delta):
-	if (player.velocity == Vector2.ZERO):
-		state_machine.change_state(state_idle)
-	if !player.is_on_floor():
-		state_machine.change_state(state_fall)
-
 	# flip sprite
 	if !player.is_facing_right && Input.is_action_pressed("ui_right"):
 		player.flip()
@@ -30,6 +26,11 @@ func process(delta):
 		player.flip()
 
 func physics_process(delta):
+	if (player.velocity.x == 0) && !(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+		state_machine.change_state(state_idle)
+	if !player.is_on_floor():
+		state_machine.change_state(state_fall)
+
 	if Input.is_action_pressed("ui_right"):
 		player.velocity = Vector2(player.speed, player.velocity.y)
 	elif Input.is_action_pressed("ui_left"):

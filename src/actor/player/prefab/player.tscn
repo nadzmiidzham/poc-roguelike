@@ -286,14 +286,18 @@ tracks/6/keys = {
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -5.3093, 2.71364 )
-texture = ExtResource( 3 )
+position = Vector2( 0.117981, -0.117985 )
+texture = ExtResource( 1 )
+hframes = 7
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2( 1.23058, 4.04732 )
-scale = Vector2( 1.047, 1.234 )
+position = Vector2( 2.5284, 4.75523 )
+scale = Vector2( 1.094, 1.205 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]

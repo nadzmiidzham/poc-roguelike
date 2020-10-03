@@ -1,3 +1,4 @@
+class_name StateIdle
 extends Node
 
 var state_machine: StateMachine

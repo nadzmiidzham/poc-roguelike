@@ -9,7 +9,7 @@ extents = Vector2( 32, 32 )
 [node name="PlayerScene" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 406.331, 134.695 )
+position = Vector2( 400.095, 179.479 )
 
 [node name="Grounds" type="Node" parent="."]
 
@@ -93,6 +93,7 @@ shape = SubResource( 1 )
 
 [node name="Ground7" type="StaticBody2D" parent="Grounds"]
 position = Vector2( 480, 416 )
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
