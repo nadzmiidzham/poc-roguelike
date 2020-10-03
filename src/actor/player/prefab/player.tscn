@@ -388,14 +388,13 @@ script = ExtResource( 5 )
 jump_force = 550
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2.71364, 4.71937 )
-texture = ExtResource( 10 )
+position = Vector2( 0.117981, -0.117985 )
+texture = ExtResource( 1 )
 hframes = 7
-frame = 2
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2( 2.22271, 4.04732 )
-scale = Vector2( 1.047, 1.234 )
+position = Vector2( 2.5284, 4.75523 )
+scale = Vector2( 1.094, 1.205 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
