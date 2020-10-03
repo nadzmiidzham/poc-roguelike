@@ -23,15 +23,15 @@ func process(delta):
 		state_machine.change_state(state_idle)
 
 	# flip sprite
-	if !player.is_facing_right && Input.is_action_pressed("ui_right"):
+	if !player.is_facing_right && Input.is_action_pressed("move_right"):
 		player.flip()
-	if player.is_facing_right && Input.is_action_pressed("ui_left"):
+	if player.is_facing_right && Input.is_action_pressed("move_left"):
 		player.flip()
 
 func physics_process(delta):
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		player.velocity = Vector2(player.speed, player.velocity.y)
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("move_left"):
 		player.velocity = Vector2(-player.speed, player.velocity.y)
 	else:
 		player.velocity = Vector2(0, player.velocity.y)
