@@ -218,7 +218,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.23058, 4.04732 ) ]
+"values": [ Vector2( 2.22271, 4.04732 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionBox:scale")
@@ -267,6 +267,30 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.71364, 4.71937 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -361,9 +385,6 @@ tracks/6/keys = {
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
 jump_force = 550
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -373,7 +394,7 @@ hframes = 7
 frame = 2
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2( 1.23058, 4.04732 )
+position = Vector2( 2.22271, 4.04732 )
 scale = Vector2( 1.047, 1.234 )
 shape = SubResource( 1 )
 
