@@ -3,7 +3,7 @@ extends Node
 
 onready var player := get_node("../../")
 onready var state_idle := get_node("../Idle")
-onready var animatedSprite: AnimatedSprite = get_node("../../AnimatedSprite")
+onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
 
 var state_machine: StateMachine
 

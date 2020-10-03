@@ -5,7 +5,7 @@ var state_machine: StateMachine
 onready var player := get_node("../../")
 onready var state_idle := get_node("../Idle")
 onready var state_fall := get_node("../Fall")
-onready var animatedSprite: AnimatedSprite = get_node("../../AnimatedSprite")
+onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
 
 # state machine functions
 func on_enter():

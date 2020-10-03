@@ -9,6 +9,7 @@ extents = Vector2( 32, 32 )
 [node name="PlayerScene" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 406.331, 134.695 )
 
 [node name="Grounds" type="Node" parent="."]
 
