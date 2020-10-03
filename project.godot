@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://src/actor/player/state/state_idle.gd"
 }, {
 "base": "Node",
+"class": "StateJump",
+"language": "GDScript",
+"path": "res://src/actor/player/state/state_jump.gd"
+}, {
+"base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/common/state_machine.gd"
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Player": "",
 "StateFall": "",
 "StateIdle": "",
+"StateJump": "",
 "StateMachine": "",
 "StateRun": ""
 }

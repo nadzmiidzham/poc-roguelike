@@ -5,6 +5,7 @@ var state_machine: StateMachine
 
 onready var player := get_node("../../")
 onready var state_run := get_node("../Run")
+onready var state_jump := get_node("../Jump")
 onready var state_fall := get_node("../Fall")
 onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
 
@@ -21,5 +22,7 @@ func on_exit():
 func process(delta):
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 		state_machine.change_state(state_run)
+	if Input.is_action_just_pressed("jump"):
+		state_machine.change_state(state_jump)
 	if !player.is_on_floor():
 		state_machine.change_state(state_fall)

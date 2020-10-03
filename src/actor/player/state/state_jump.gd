@@ -1,18 +1,18 @@
-class_name StateRun
+class_name StateJump
 extends Node
 
 var state_machine: StateMachine
+var _is_jump_finished: bool
 
 onready var player := get_node("../../")
-onready var state_idle := get_node("../Idle")
-onready var state_jump := get_node("../Jump")
 onready var state_fall := get_node("../Fall")
 onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
 
 # state machine functions
 func on_enter():
-	print("State: RUN")
-	animatedSprite.play("run")
+	print("State: JUMP")
+	_is_jump_finished = false
+	animatedSprite.play("jump")
 
 func on_exit():
 	pass
@@ -20,19 +20,14 @@ func on_exit():
 
 # state logic
 func process(delta):
-	# flip sprite
-	if !player.is_facing_right && Input.is_action_pressed("move_right"):
-		player.flip()
-	if player.is_facing_right && Input.is_action_pressed("move_left"):
-		player.flip()
+	if _is_jump_finished:
+		state_machine.change_state(state_fall)
 
 func physics_process(delta):
-	if (player.velocity.x == 0) && !(Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left")):
-		state_machine.change_state(state_idle)
-	if !player.is_on_floor():
-		state_machine.change_state(state_fall)
-	if Input.is_action_just_pressed("jump"):
-		state_machine.change_state(state_jump)
+	if player.is_on_floor():
+		player.velocity.y = -player.jump_force
+	if player.velocity.y > 0:
+		_is_jump_finished = true
 
 	if Input.is_action_pressed("move_right"):
 		player.velocity = Vector2(player.speed, player.velocity.y)
