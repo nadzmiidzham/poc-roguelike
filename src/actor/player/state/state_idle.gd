@@ -10,16 +10,16 @@ onready var state_fall := get_node("../Fall")
 onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
 
 # state machine functions
-func on_enter():
+func on_enter() -> void:
 	print("State: IDLE")
 	animatedSprite.play("idle")
 
-func on_exit():
+func on_exit() -> void:
 	pass
 
 
 # state logic
-func process(delta):
+func process(delta) -> void:
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 		state_machine.change_state(state_run)
 	if Input.is_action_just_pressed("jump"):

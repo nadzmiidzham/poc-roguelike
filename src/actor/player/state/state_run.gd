@@ -10,23 +10,23 @@ onready var state_fall := get_node("../Fall")
 onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
 
 # state machine functions
-func on_enter():
+func on_enter() -> void:
 	print("State: RUN")
 	animatedSprite.play("run")
 
-func on_exit():
+func on_exit() -> void:
 	pass
 
 
 # state logic
-func process(delta):
+func process(delta) -> void:
 	# flip sprite
 	if !player.is_facing_right && Input.is_action_pressed("move_right"):
 		player.flip()
 	if player.is_facing_right && Input.is_action_pressed("move_left"):
 		player.flip()
 
-func physics_process(delta):
+func physics_process(delta) -> void:
 	if (player.velocity.x == 0) && !(Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left")):
 		state_machine.change_state(state_idle)
 	if !player.is_on_floor():
@@ -34,12 +34,6 @@ func physics_process(delta):
 	if Input.is_action_just_pressed("jump"):
 		state_machine.change_state(state_jump)
 
-	if Input.is_action_pressed("move_right"):
-		player.velocity = Vector2(player.speed, player.velocity.y)
-	elif Input.is_action_pressed("move_left"):
-		player.velocity = Vector2(-player.speed, player.velocity.y)
-	else:
-		player.velocity = Vector2(0, player.velocity.y)
-
+	player.move()
 	player.compute_gravity()
 	player.compute_velocity()

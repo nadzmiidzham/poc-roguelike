@@ -16,6 +16,14 @@ func compute_gravity() -> void:
 func compute_velocity() -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
 
+func move() -> void:
+	if Input.is_action_pressed("move_right"):
+		velocity = Vector2(speed, velocity.y)
+	elif Input.is_action_pressed("move_left"):
+		velocity = Vector2(-speed, velocity.y)
+	else:
+		velocity = Vector2(0, velocity.y)
+
 func flip() -> void:
 	is_facing_right = !is_facing_right
 	self.scale.x *= -1

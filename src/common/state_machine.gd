@@ -25,7 +25,7 @@ func _input(event):
 
 
 # state machine specific function
-func change_state(new_state):
+func change_state(new_state) -> void:
 	if (_state == null) || (_state.get_name() != new_state.get_name()):
 		if _state != null:
 			_state.on_exit()
