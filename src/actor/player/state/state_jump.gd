@@ -6,13 +6,13 @@ var _is_jump_finished: bool
 
 onready var player := get_node("../../")
 onready var state_fall := get_node("../Fall")
-onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
+onready var animated_sprite: AnimationPlayer = get_node("../../Animation")
 
 # state machine functions
 func on_enter() -> void:
 	print("State: JUMP")
 	_is_jump_finished = false
-	animatedSprite.play("jump")
+	animated_sprite.play("jump")
 
 func on_exit() -> void:
 	pass

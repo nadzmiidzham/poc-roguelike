@@ -7,12 +7,12 @@ onready var player := get_node("../../")
 onready var state_idle := get_node("../Idle")
 onready var state_jump := get_node("../Jump")
 onready var state_fall := get_node("../Fall")
-onready var animatedSprite: AnimationPlayer = get_node("../../Animation")
+onready var animated_sprite: AnimationPlayer = get_node("../../Animation")
 
 # state machine functions
 func on_enter() -> void:
 	print("State: RUN")
-	animatedSprite.play("run")
+	animated_sprite.play("run")
 
 func on_exit() -> void:
 	pass
