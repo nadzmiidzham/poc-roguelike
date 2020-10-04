@@ -369,7 +369,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 position = Vector2( 579.095, 150.479 )
 
 [node name="Item" parent="." instance=ExtResource( 3 )]
-position = Vector2( 88.2941, 216.11 )
+position = Vector2( 98.3849, 220.315 )
 z_index = -1
 
 [node name="TileMap" type="TileMap" parent="."]
