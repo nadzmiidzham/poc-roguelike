@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://src/scene/player/main_menu.tscn"
+run/main_scene="res://src/ui/main_menu/main_menu.tscn"
 config/icon="res://src/actor/player/sprite/player_fall.png"
 
 [display]
