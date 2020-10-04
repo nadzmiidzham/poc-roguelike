@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 export (int) var gravity := 20
 export (int) var speed := 200
+export (int) var wall_slide_speed := 20
 export (int) var jump_force := 20
 
 onready var is_facing_right := true
@@ -17,13 +18,15 @@ func compute_velocity() -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func move() -> void:
-	if Input.is_action_pressed("move_right"):
-		velocity = Vector2(speed, velocity.y)
-	elif Input.is_action_pressed("move_left"):
-		velocity = Vector2(-speed, velocity.y)
-	else:
-		velocity = Vector2(0, velocity.y)
+	var right_input = Input.is_action_pressed("move_right")
+	var left_input = Input.is_action_pressed("move_left")
 
-func flip() -> void:
-	is_facing_right = !is_facing_right
-	self.scale.x *= -1
+	velocity.x = (int(right_input) - int(left_input)) * speed
+
+func check_flip() -> void:
+	if !is_facing_right && (velocity.x > 0):
+		is_facing_right = !is_facing_right
+		self.scale.x *= -1
+	if is_facing_right && (velocity.x < 0):
+		is_facing_right = !is_facing_right
+		self.scale.x *= -1
