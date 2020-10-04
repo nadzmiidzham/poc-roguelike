@@ -29,10 +29,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/actor/player/state/state_jump.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://src/common/state_machine.gd"
+"path": "res://src/common/script/state_machine.gd"
 }, {
 "base": "Node",
 "class": "StateRun",
@@ -51,8 +51,8 @@ _global_script_class_icons={
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://src/scene/player_scene.tscn"
-config/icon="res://src/sprite/player/player_fall.png"
+run/main_scene="res://src/scene/player/player_scene.tscn"
+config/icon="res://src/actor/player/sprite/player_fall.png"
 
 [display]
 
@@ -108,6 +108,11 @@ interact={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="interactable"
 
 [rendering]
 
