@@ -13,8 +13,8 @@
 [ext_resource path="res://src/sprite/player/wall_slide.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.36363
-height = 19.4095
+radius = 5.83045
+height = 9.74838
 
 [sub_resource type="Animation" id=2]
 resource_name = "fall"
@@ -244,6 +244,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "jump"
+length = 0.05
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -481,6 +482,8 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "wall_slide"
+length = 0.05
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -608,12 +611,12 @@ script = ExtResource( 5 )
 jump_force = 550
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.117981, -0.117985 )
-texture = ExtResource( 1 )
+texture = ExtResource( 11 )
 hframes = 7
+frame = 6
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2( 2.5284, 4.75523 )
+position = Vector2( 4.70752, 3.70056 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
