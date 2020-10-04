@@ -13,8 +13,8 @@
 [ext_resource path="res://src/sprite/player/wall_slide.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.83045
-height = 9.74838
+radius = 3.36363
+height = 19.4095
 
 [sub_resource type="Animation" id=2]
 resource_name = "fall"
@@ -608,12 +608,12 @@ script = ExtResource( 5 )
 jump_force = 550
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 11 )
+position = Vector2( 0.117981, -0.117985 )
+texture = ExtResource( 1 )
 hframes = 7
-frame = 6
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2( 4.70752, 3.70056 )
+position = Vector2( 2.5284, 4.75523 )
 shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]

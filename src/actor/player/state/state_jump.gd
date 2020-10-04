@@ -11,18 +11,18 @@ onready var animated_sprite: AnimationPlayer = get_node("../../Animation")
 # state machine functions
 func on_enter() -> void:
 	print("State: JUMP")
-	_is_jump_finished = false
 	animated_sprite.play("jump")
 
 func on_exit() -> void:
-	pass
+	_is_jump_finished = false
 
 
 # state logic
 func process(_delta) -> void:
-	player.check_flip()
 	if _is_jump_finished:
 		state_machine.change_state(state_fall)
+
+	player.check_flip()
 
 func physics_process(_delta) -> void:
 	if player.is_on_floor():
