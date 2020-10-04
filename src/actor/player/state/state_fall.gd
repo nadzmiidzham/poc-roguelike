@@ -2,8 +2,6 @@ class_name StateFall
 extends Node
 
 
-export (float) var wall_slide_gravity_rate := 1.5
-
 onready var player := get_node("../../")
 onready var state_idle := get_node("../Idle")
 onready var animated_sprite: AnimationPlayer = get_node("../../Animation")
@@ -35,7 +33,7 @@ func process(_delta) -> void:
 
 func physics_process(_delta) -> void:
 	if player.is_on_wall():
-		var wall_slide_speed = player.gravity / wall_slide_gravity_rate;
+		var wall_slide_speed = player.gravity / player.wall_slide_gravity_rate;
 		is_wall_sliding = true
 		player.velocity.y = min(player.velocity.y + wall_slide_speed, wall_slide_speed)
 	if is_wall_sliding && Input.is_action_just_pressed("jump"):

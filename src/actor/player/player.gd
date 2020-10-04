@@ -3,8 +3,8 @@ extends KinematicBody2D
 
 export (int) var gravity := 20
 export (int) var speed := 200
-export (int) var wall_slide_speed := 20
 export (int) var jump_force := 20
+export (float) var wall_slide_gravity_rate := 1.5
 
 onready var is_facing_right := true
 onready var velocity := Vector2.ZERO
