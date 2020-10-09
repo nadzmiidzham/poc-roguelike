@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/brickTileset.png-d6fd70bd7b5e3dfdc6a71f96f42005a4.stex"
+path="res://.import/DirtAutoTile.png-c8ac111c00cc570f92a248b6e96e41c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprite/tiles/brickTileset.png"
-dest_files=[ "res://.import/brickTileset.png-d6fd70bd7b5e3dfdc6a71f96f42005a4.stex" ]
+source_file="res://src/scene/player/DirtAutoTile.png"
+dest_files=[ "res://.import/DirtAutoTile.png-c8ac111c00cc570f92a248b6e96e41c8.stex" ]
 
 [params]
 
