@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/ui/main_menu/sprite/icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/main_menu/icon.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/main_menu/prefab/option_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ui/main_menu/prefab/new_game_button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/ui/main_menu/prefab/exit_game_button.tscn" type="PackedScene" id=4]

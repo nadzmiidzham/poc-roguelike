@@ -9,26 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Interactable",
+"language": "GDScript",
+"path": "res://src/object/item/script/Item.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://src/actor/player/player.gd"
-}, {
-"base": "Node",
-"class": "StateMachine",
-"language": "GDScript",
-"path": "res://src/common/script/state_machine.gd"
+"path": "res://src/actor/player/script/Player.gd"
 } ]
 _global_script_class_icons={
-"Player": "",
-"StateMachine": ""
+"Interactable": "",
+"Player": ""
 }
 
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://src/scene/player/player_scene.tscn"
-config/icon="res://src/actor/player/sprite/player_fall.png"
+run/main_scene="res://src/scene/player_scene.tscn"
+config/icon="res://assets/player/player_fall.png"
 
 [display]
 
@@ -107,6 +107,9 @@ attack_3={
 
 2d_physics/layer_1="default"
 2d_physics/layer_2="interactable"
+2d_physics/layer_3="player"
+2d_physics/layer_4="environment"
+2d_physics/layer_5="enemy"
 
 [rendering]
 

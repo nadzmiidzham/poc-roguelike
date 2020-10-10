@@ -9,12 +9,13 @@ export (int) var jump_force := 550
 export (float) var wall_slide_gravity_rate := 1.5
 
 onready var animation := $Animation
-onready var attack_animation := $AttackAnimation
 onready var ground_check := $GroundCheck
 onready var front_check := $FrontCheck
 
 onready var velocity := Vector2.ZERO
 onready var linear_drag := 0.2
+onready var cur_attack_time := 1
+onready var max_attack_time := 3
 onready var is_facing_right := true
 onready var is_wall_sliding := false
 onready var is_wall_jumping := false
@@ -50,9 +51,10 @@ func _physics_process(delta):
 	# wall slide & wall jump
 	if !is_grounded() && is_touching_wall() && velocity.y > 0:
 		var slide_speed = gravity / 2
-		is_wall_sliding = true
 		velocity.y = min(velocity.y + slide_speed, max_slide_speed)
+		is_wall_sliding = true
 		animation.play("wall_slide")
+
 	if is_wall_sliding && Input.is_action_just_pressed("jump"):
 		var direction = -1 if is_facing_right else 1
 		velocity = Vector2(direction * max_speed, -jump_force)
