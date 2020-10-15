@@ -1,8 +1,29 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://src/actor/player/prefab/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/object/item/prefab/item.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/dirt_tile/DirtAutoTile.png" type="Texture" id=3]
+[ext_resource path="res://src/object/destructable/Destructable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/box/00.png" type="Texture" id=5]
+[ext_resource path="res://src/object/destructable/Box.gd" type="Script" id=6]
+[ext_resource path="res://assets/box/01.png" type="Texture" id=7]
+[ext_resource path="res://assets/box/02.png" type="Texture" id=8]
+[ext_resource path="res://assets/box/05.png" type="Texture" id=9]
+[ext_resource path="res://assets/box/04.png" type="Texture" id=10]
+[ext_resource path="res://assets/box/03.png" type="Texture" id=11]
+[ext_resource path="res://assets/box/06.png" type="Texture" id=12]
+[ext_resource path="res://assets/box/07.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "destroyed",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 15, 15 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -311,6 +332,36 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [node name="PlayerScene" type="Node"]
 
+[node name="Destructables" type="Node" parent="."]
+
+[node name="Destructable" parent="Destructables" instance=ExtResource( 4 )]
+position = Vector2( 531.652, 560.893 )
+collision_layer = 136
+collision_mask = 84
+script = ExtResource( 6 )
+
+[node name="DestructibleSprite" parent="Destructables/Destructable" index="0"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 33 )
+animation = "destroyed"
+
+[node name="DestructibleCollision" parent="Destructables/Destructable" index="1"]
+shape = SubResource( 34 )
+
+[node name="Destructable2" parent="Destructables" instance=ExtResource( 4 )]
+position = Vector2( 370.613, 560.893 )
+collision_layer = 136
+collision_mask = 84
+script = ExtResource( 6 )
+
+[node name="DestructibleSprite" parent="Destructables/Destructable2" index="0"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 33 )
+animation = "destroyed"
+
+[node name="DestructibleCollision" parent="Destructables/Destructable2" index="1"]
+shape = SubResource( 34 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 475.781, 190.796 )
 
@@ -330,3 +381,11 @@ collision_layer = 8
 collision_mask = 20
 format = 1
 tile_data = PoolIntArray( 131071, 0, 1, 65536, 0, 2, 65551, 0, 1, 65552, 0, 2, 196607, 0, 131073, 131072, 0, 131074, 131083, 0, 1, 131084, 0, 2, 131087, 0, 131073, 131088, 0, 131074, 262143, 0, 131073, 196608, 0, 131074, 196619, 0, 131073, 196620, 0, 131074, 196623, 0, 131073, 196624, 0, 131074, 327679, 0, 131073, 262144, 0, 131074, 262149, 0, 196608, 262150, 0, 196609, 262151, 0, 196609, 262152, 0, 196610, 262155, 0, 65537, 262156, 0, 65538, 262159, 0, 131073, 262160, 0, 131074, 393215, 0, 131073, 327680, 0, 131074, 327695, 0, 131073, 327696, 0, 131074, 458751, 0, 131073, 393216, 0, 65539, 393217, 0, 65536, 393218, 0, 2, 393231, 0, 131073, 393232, 0, 131074, 524287, 0, 131073, 458752, 0, 196619, 458753, 0, 196619, 458754, 0, 131074, 458765, 0, 1, 458766, 0, 65536, 458767, 0, 65540, 458768, 0, 131074, 589823, 0, 131073, 524288, 0, 196619, 524289, 0, 196619, 524290, 0, 65539, 524291, 0, 2, 524299, 0, 1, 524300, 0, 65536, 524301, 0, 65540, 524302, 0, 196619, 524303, 0, 196619, 524304, 0, 131074, 655359, 0, 65537, 589824, 0, 131072, 589825, 0, 131072, 589826, 0, 131072, 589827, 0, 65547, 589828, 0, 196609, 589829, 0, 196609, 589830, 0, 196609, 589831, 0, 196609, 589832, 0, 196609, 589833, 0, 196609, 589834, 0, 196609, 589835, 0, 65544, 589836, 0, 131072, 589837, 0, 131072, 589838, 0, 131072, 589839, 0, 131072, 589840, 0, 65538 )
+[connection signal="area_entered" from="Destructables/Destructable" to="Destructables/Destructable" method="_on_Destructable_area_entered"]
+[connection signal="body_shape_entered" from="Destructables/Destructable" to="Destructables/Destructable" method="_on_Destructable_body_shape_entered"]
+[connection signal="area_entered" from="Destructables/Destructable2" to="Destructables/Destructable2" method="_on_Destructable_area_entered"]
+[connection signal="body_shape_entered" from="Destructables/Destructable2" to="Destructables/Destructable2" method="_on_Destructable_body_shape_entered"]
+
+[editable path="Destructables/Destructable"]
+
+[editable path="Destructables/Destructable2"]

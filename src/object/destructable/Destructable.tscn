@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Destructible" type="Area2D"]
+
+[node name="DestructibleSprite" type="AnimatedSprite" parent="."]
+
+[node name="DestructibleCollision" type="CollisionShape2D" parent="."]
