@@ -11,6 +11,6 @@ func _process(_delta):
 		collision.set_disabled(false)
 
 
-func _on_Destructable_area_entered(area):
+func _on_Destructable_area_entered(_area):
 	if hp > 0:
 		hp -= 1

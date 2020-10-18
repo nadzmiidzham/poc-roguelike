@@ -15,7 +15,7 @@ onready var velocity := Vector2.ZERO
 onready var is_facing_right := true
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.y += gravity
 	velocity = move_and_slide(velocity, Vector2.UP) # compute velocity
 

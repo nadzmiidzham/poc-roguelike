@@ -6,7 +6,7 @@ onready var label := $Label
 onready var interactable := false
 
 
-func _process(delta):
+func _process(_delta):
 	if interactable:
 		label.show()
 	else:
@@ -18,10 +18,10 @@ func _input(_event):
 		interactable = false
 
 
-func _on_Interactable_body_entered(body):
+func _on_Interactable_body_entered(_body):
 	print('entered')
 	interactable = true
 
-func _on_Interactable_body_exited(body):
+func _on_Interactable_body_exited(_body):
 	print('exited')
 	interactable = false

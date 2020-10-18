@@ -1,8 +1,6 @@
 class_name StateMachine
 extends Node
 
-signal on_change_state(current_state)
-
 export(NodePath) var initial_state
 
 var state_map = {}
@@ -59,7 +57,6 @@ func _change_state(state_name):
 		state_stack[0] = state_map[state_name]
 
 	current_state = state_stack[0]
-	emit_signal("on_change_state", current_state)
 
 	if state_name != 'previous':
 		current_state.on_enter()
