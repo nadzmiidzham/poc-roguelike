@@ -4,15 +4,18 @@ extends State
 export(Array) var combo = [
 	{
 		"animation": "attack_basic_1",
-		"effect": null
+		"effect": null,
+		"damage": 1
 	},
 	{
 		"animation": "attack_basic_2",
-		"effect": null
+		"effect": null,
+		"damage": 1
 	},
 	{
 		"animation": "attack_basic_3",
-		"effect": null
+		"effect": null,
+		"damage": 1
 	}
 ]
 
