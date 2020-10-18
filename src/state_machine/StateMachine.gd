@@ -4,6 +4,7 @@ extends Node
 export(NodePath) var initial_state
 
 var state_map = {}
+var interrupt_state = []
 var state_stack = []
 var current_state: Node = null
 
@@ -41,22 +42,29 @@ func set_active(value):
 	_active = value
 	set_physics_process(value)
 	set_process_input(value)
-	if not _active:
+	if !_active:
 		state_stack = []
 		current_state = null
 
 func _change_state(state_name):
 	if !_active:
 		return
+	if (state_map.has(state_name)) && (current_state == state_map[state_name]):
+		return
 
+	if state_name in interrupt_state:
+		state_stack.push_front(state_map[state_name])
+
+	# on exit
 	current_state.on_exit()
 
+	# add state to stack
 	if state_name == 'previous':
 		state_stack.pop_front()
 	else:
 		state_stack[0] = state_map[state_name]
-
 	current_state = state_stack[0]
 
+	# on enter
 	if state_name != 'previous':
 		current_state.on_enter()

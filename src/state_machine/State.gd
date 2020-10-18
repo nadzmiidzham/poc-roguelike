@@ -22,5 +22,5 @@ func input(_event):
 	pass
 
 
-func _on_animation_finished(_name):
+func on_animation_finished(_animation_name):
 	pass
