@@ -1,21 +1,11 @@
 extends State
 
 
-export(String) var action_button := "attack_basic"
+export(String) var action_button := "attack_secondary"
 export(float) var timer_interval := 0.3
 export(Array) var combo = [
 	{
-		"animation": "attack_basic_1",
-		"effect": null,
-		"damage": 1
-	},
-	{
-		"animation": "attack_basic_2",
-		"effect": null,
-		"damage": 1
-	},
-	{
-		"animation": "attack_basic_3",
+		"animation": "attack_secondary",
 		"effect": null,
 		"damage": 1
 	}
