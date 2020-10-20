@@ -197,7 +197,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack_basic_3"
-length = 0.3
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -278,15 +278,15 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 9, 10, 11, 12, 13, 14 ]
+"values": [ 9, 10, 11, 12, 13, 14, 14 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 resource_name = "attack_secondary"
-length = 0.3
+length = 0.45
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -367,13 +367,13 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 1, 2, 3, 4, 5, 5 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -676,7 +676,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.65
 loop = true
 tracks/0/type = "value"
@@ -980,7 +980,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -1283,7 +1283,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.35
 loop = true
 tracks/0/type = "value"
@@ -1587,7 +1587,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.25
 loop = true
 tracks/0/type = "value"
@@ -1920,12 +1920,12 @@ collision_mask = 8
 anims/attack_basic_1 = SubResource( 2 )
 anims/attack_basic_2 = SubResource( 3 )
 anims/attack_basic_3 = SubResource( 4 )
-anims/attack_secondary = SubResource( 10 )
-anims/fall = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/jump = SubResource( 7 )
-anims/move = SubResource( 8 )
-anims/wall_slide = SubResource( 9 )
+anims/attack_secondary = SubResource( 5 )
+anims/fall = SubResource( 6 )
+anims/idle = SubResource( 7 )
+anims/jump = SubResource( 8 )
+anims/move = SubResource( 9 )
+anims/wall_slide = SubResource( 10 )
 
 [node name="State" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -1942,5 +1942,5 @@ script = ExtResource( 7 )
 
 [node name="AttackSecondary" type="Node" parent="State"]
 script = ExtResource( 9 )
-[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
