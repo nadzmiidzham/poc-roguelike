@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/actor/player/prefab/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/object/box/Box.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/dirt_tile/DirtAutoTile.png" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -309,6 +310,9 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 0/z_index = 0
 
 [node name="PlayerScene" type="Node"]
+
+[node name="Box" parent="." instance=ExtResource( 2 )]
+position = Vector2( 603.884, 547.761 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 475.781, 190.796 )
