@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://src/common/prefab/HurtBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/common/HurtBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/box/01.png" type="Texture" id=2]
 [ext_resource path="res://assets/box/02.png" type="Texture" id=3]
 [ext_resource path="res://assets/box/05.png" type="Texture" id=4]
@@ -9,7 +9,9 @@
 [ext_resource path="res://assets/box/00.png" type="Texture" id=7]
 [ext_resource path="res://assets/box/03.png" type="Texture" id=8]
 [ext_resource path="res://assets/box/06.png" type="Texture" id=9]
-[ext_resource path="res://src/object/box/Box.gd" type="Script" id=10]
+[ext_resource path="res://src/game/object/box/BoxController.gd" type="Script" id=10]
+[ext_resource path="res://src/game/object/box/BoxModel.gd" type="Script" id=11]
+[ext_resource path="res://src/game/object/box/BoxService.gd" type="Script" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -45,5 +47,11 @@ shape = SubResource( 2 )
 
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
 shape = SubResource( 3 )
+
+[node name="Service" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="Model" type="Node" parent="Service"]
+script = ExtResource( 11 )
 
 [editable path="HurtBox"]

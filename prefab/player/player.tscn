@@ -1,28 +1,29 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/player/player_idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/player/player_run.png" type="Texture" id=2]
-[ext_resource path="res://src/actor/player/script/state/StateIdle.gd" type="Script" id=3]
-[ext_resource path="res://src/actor/player/script/state/PlayerStateMachine.gd" type="Script" id=4]
-[ext_resource path="res://src/actor/player/script/Player.gd" type="Script" id=5]
-[ext_resource path="res://src/actor/player/script/state/StateMove.gd" type="Script" id=6]
-[ext_resource path="res://src/actor/player/script/state/StateAttackBasic.gd" type="Script" id=7]
+[ext_resource path="res://src/game/player/state/StateIdle.gd" type="Script" id=3]
+[ext_resource path="res://src/game/player/state/PlayerStateMachine.gd" type="Script" id=4]
+[ext_resource path="res://src/game/player/PlayerController.gd" type="Script" id=5]
+[ext_resource path="res://src/game/player/state/StateMove.gd" type="Script" id=6]
+[ext_resource path="res://src/game/player/state/StateAttackBasic.gd" type="Script" id=7]
 [ext_resource path="res://assets/player/attack_basic.png" type="Texture" id=8]
-[ext_resource path="res://src/actor/player/script/state/StateAttackSecondary.gd" type="Script" id=9]
+[ext_resource path="res://src/game/player/state/StateAttackSecondary.gd" type="Script" id=9]
 [ext_resource path="res://assets/player/player_jump.png" type="Texture" id=10]
 [ext_resource path="res://assets/player/wall_slide.png" type="Texture" id=11]
 [ext_resource path="res://assets/player/attack_secondary.png" type="Texture" id=12]
-[ext_resource path="res://src/common/prefab/HitBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefab/common/HitBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/game/player/PlayerModel.gd" type="Script" id=14]
+[ext_resource path="res://src/game/player/PlayerService.gd" type="Script" id=15]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.42911
 height = 16.2034
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 5.87389, 7.54907 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.25517, 12.322 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "attack_basic_1"
+[sub_resource type="Animation" id=3]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -170,8 +171,7 @@ tracks/11/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "attack_basic_2"
+[sub_resource type="Animation" id=4]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -319,8 +319,7 @@ tracks/11/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "attack_basic_3"
+[sub_resource type="Animation" id=5]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -468,8 +467,7 @@ tracks/11/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "attack_secondary"
+[sub_resource type="Animation" id=6]
 length = 0.45
 step = 0.05
 tracks/0/type = "value"
@@ -557,7 +555,7 @@ tracks/6/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -860,7 +858,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.65
 loop = true
 tracks/0/type = "value"
@@ -1164,7 +1162,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -1467,7 +1465,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.35
 loop = true
 tracks/0/type = "value"
@@ -1771,7 +1769,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.25
 loop = true
 tracks/0/type = "value"
@@ -2082,10 +2080,9 @@ collision_mask = 14
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -1.986 )
-texture = ExtResource( 8 )
-hframes = 15
-frame = 14
+position = Vector2( -0.643418, -3.70812 )
+texture = ExtResource( 1 )
+hframes = 7
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -2103,20 +2100,26 @@ collision_mask = 8
 [node name="HitBox" parent="." instance=ExtResource( 13 )]
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
-position = Vector2( 10.5182, 0 )
-shape = SubResource( 11 )
+position = Vector2( 9.81111, 0 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/attack_basic_1 = SubResource( 2 )
-anims/attack_basic_2 = SubResource( 3 )
-anims/attack_basic_3 = SubResource( 4 )
-anims/attack_secondary = SubResource( 5 )
-anims/fall = SubResource( 6 )
-anims/idle = SubResource( 7 )
-anims/jump = SubResource( 8 )
-anims/move = SubResource( 9 )
-anims/wall_slide = SubResource( 10 )
+anims/attack_basic_1 = SubResource( 3 )
+anims/attack_basic_2 = SubResource( 4 )
+anims/attack_basic_3 = SubResource( 5 )
+anims/attack_secondary = SubResource( 6 )
+anims/fall = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/jump = SubResource( 9 )
+anims/move = SubResource( 10 )
+anims/wall_slide = SubResource( 11 )
+
+[node name="Service" type="Node" parent="."]
+script = ExtResource( 15 )
+
+[node name="Model" type="Node" parent="Service"]
+script = ExtResource( 14 )
 
 [node name="State" type="Node" parent="."]
 script = ExtResource( 4 )

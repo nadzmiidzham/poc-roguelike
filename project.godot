@@ -9,17 +9,53 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "BoxController",
+"language": "GDScript",
+"path": "res://src/game/object/box/BoxController.gd"
+}, {
+"base": "Node",
+"class": "BoxModel",
+"language": "GDScript",
+"path": "res://src/game/object/box/BoxModel.gd"
+}, {
+"base": "Node",
+"class": "BoxService",
+"language": "GDScript",
+"path": "res://src/game/object/box/BoxService.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlayerController",
+"language": "GDScript",
+"path": "res://src/game/player/PlayerController.gd"
+}, {
+"base": "Node",
+"class": "PlayerModel",
+"language": "GDScript",
+"path": "res://src/game/player/PlayerModel.gd"
+}, {
+"base": "Node",
+"class": "PlayerService",
+"language": "GDScript",
+"path": "res://src/game/player/PlayerService.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://src/state_machine/State.gd"
+"path": "res://src/common/state_machine/State.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://src/state_machine/StateMachine.gd"
+"path": "res://src/common/state_machine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"BoxController": "",
+"BoxModel": "",
+"BoxService": "",
+"PlayerController": "",
+"PlayerModel": "",
+"PlayerService": "",
 "State": "",
 "StateMachine": ""
 }
@@ -27,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://src/scene/player_scene.tscn"
+run/main_scene="res://scene/player_scene.tscn"
 config/icon="res://assets/player/player_fall.png"
 
 [display]

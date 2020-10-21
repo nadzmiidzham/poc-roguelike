@@ -1,3 +1,4 @@
+class_name PlayerController
 extends KinematicBody2D
 
 
@@ -8,6 +9,7 @@ export (int) var max_speed := 200
 export (int) var max_slide_speed := 100
 export (int) var jump_force := 550
 
+onready var service := $Service
 onready var ground_check := $GroundCheck
 onready var front_check := $FrontCheck
 
