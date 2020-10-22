@@ -12,7 +12,6 @@
 [ext_resource path="res://src/object/box/BoxModel.gd" type="Script" id=11]
 [ext_resource path="res://src/object/box/BoxService.gd" type="Script" id=12]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],

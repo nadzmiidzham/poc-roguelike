@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://prefab/object/Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/object/box.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/environment/dirt_tile/DirtAutoTile.png" type="Texture" id=3]
 

@@ -12,11 +12,9 @@
 [ext_resource path="res://assets/actor/player/player_jump.png" type="Texture" id=10]
 [ext_resource path="res://assets/actor/player/wall_slide.png" type="Texture" id=11]
 [ext_resource path="res://assets/actor/player/attack_secondary.png" type="Texture" id=12]
-[ext_resource path="res://prefab/common/HitBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefab/common/hit_box.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/actor/player/PlayerModel.gd" type="Script" id=14]
 [ext_resource path="res://src/actor/player/PlayerService.gd" type="Script" id=15]
-
-
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.42911
@@ -2142,7 +2140,7 @@ script = ExtResource( 7 )
 [node name="AttackSecondary" type="Node" parent="State"]
 script = ExtResource( 9 )
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
-[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 
 [editable path="HitBox"]
