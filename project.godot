@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/object/box/BoxModel.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "BoxService",
 "language": "GDScript",
 "path": "res://src/object/box/BoxService.gd"

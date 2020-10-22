@@ -20,5 +20,5 @@ func on_destroyed():
 		collision.disabled = true
 		collision.visible = false
 
-func on_damaged(value: int) -> void:
+func on_damage(value: int) -> void:
 	service.update_hp(service.get_hp() - value)

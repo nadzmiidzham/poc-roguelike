@@ -37,5 +37,5 @@ func is_touching_wall():
 
 
 func _on_HitBox_body_entered(body):
-	if body.has_method("on_damaged"):
-		body.on_damaged(service.get_atk())
+	if body.has_method("on_damage"):
+		body.on_damage(service.get_atk())
