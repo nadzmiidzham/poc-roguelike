@@ -12,32 +12,32 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "BoxController",
 "language": "GDScript",
-"path": "res://src/game/object/box/BoxController.gd"
+"path": "res://src/object/box/BoxController.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "BoxModel",
 "language": "GDScript",
-"path": "res://src/game/object/box/BoxModel.gd"
+"path": "res://src/object/box/BoxModel.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "BoxService",
 "language": "GDScript",
-"path": "res://src/game/object/box/BoxService.gd"
+"path": "res://src/object/box/BoxService.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "PlayerController",
 "language": "GDScript",
-"path": "res://src/game/player/PlayerController.gd"
+"path": "res://src/actor/player/PlayerController.gd"
 }, {
 "base": "Node",
 "class": "PlayerModel",
 "language": "GDScript",
-"path": "res://src/game/player/PlayerModel.gd"
+"path": "res://src/actor/player/PlayerModel.gd"
 }, {
 "base": "Node",
 "class": "PlayerService",
 "language": "GDScript",
-"path": "res://src/game/player/PlayerService.gd"
+"path": "res://src/actor/player/PlayerService.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -63,8 +63,8 @@ _global_script_class_icons={
 [application]
 
 config/name="poc-roguelike"
-run/main_scene="res://scene/player_scene.tscn"
-config/icon="res://assets/player/player_fall.png"
+run/main_scene="res://scene/player/player_scene.tscn"
+config/icon="res://assets/actor/player/player_fall.png"
 
 [display]
 
