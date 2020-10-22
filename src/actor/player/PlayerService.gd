@@ -4,11 +4,8 @@ extends Node
 
 onready var model := $Model
 
-func get_model() -> PlayerModel:
-	return model as PlayerModel
 
-
-func on_attack() -> int:
+func get_atk() -> int:
 	return model.atk
 
 func on_damage(value: int) -> void:
