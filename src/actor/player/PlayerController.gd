@@ -9,6 +9,8 @@ export (int) var max_speed := 200
 export (int) var max_slide_speed := 100
 export (int) var jump_force := 550
 
+onready var projectile = preload("res://prefab/actor/player/projectile.tscn")
+onready var projectile_spawn_position := $ProjectileSpawnPosition
 onready var service := $Service
 onready var ground_check := $GroundCheck
 onready var front_check := $FrontCheck
@@ -35,6 +37,13 @@ func is_grounded():
 func is_touching_wall():
 	return front_check.is_colliding()
 
+
+func _on_AttackSecondary_spawn_projectile():
+	var projectile_instance = projectile.instance()
+	
+	projectile_instance.direction = Vector2.RIGHT if is_facing_right else Vector2.LEFT
+	projectile_instance.position = get_global_position()
+	owner.get_parent().add_child(projectile_instance)
 
 func _on_HitBox_body_entered(body):
 	if body.has_method("on_damage"):

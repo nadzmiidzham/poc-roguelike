@@ -1,6 +1,8 @@
 extends State
 
 
+signal spawn_projectile()
+
 export(String) var action_button := "attack_secondary"
 export(float) var timer_interval := 0.3
 export(Array) var combo = [
@@ -60,7 +62,7 @@ func process(_delta):
 		animation_finished = false # start a new animation
 		timer_finished = false # reset timer due to received input for next attack combo animation
 		animation.play(cur_animation_name)
-
+		emit_signal("spawn_projectile")
 
 func _on_Animation_animation_finished(anim_name):
 	if anim_name == cur_animation_name:

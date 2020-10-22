@@ -311,8 +311,13 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [node name="PlayerScene" type="Node"]
 
-[node name="Box" parent="." instance=ExtResource( 1 )]
-position = Vector2( 603.884, 547.761 )
+[node name="Boxes" type="Node" parent="."]
+
+[node name="Box" parent="Boxes" instance=ExtResource( 1 )]
+position = Vector2( 605.884, 544.761 )
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 1 )]
+position = Vector2( 389.827, 224.297 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 475.781, 190.796 )
