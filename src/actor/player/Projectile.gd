@@ -3,12 +3,14 @@ extends KinematicBody2D
 
 
 export (Vector2) var direction := Vector2.RIGHT
+export (int) var damage := 0
 
 onready var animated_sprite := $AnimatedSprite
 onready var delete_timer := $DeleteTimer
 
 onready var projection_speed := 400
 onready var velocity := Vector2.ZERO
+
 
 func _ready():
 	scale.x *= direction.x
@@ -22,3 +24,8 @@ func _physics_process(_delta):
 
 func _on_DeleteTimer_timeout():
 	self.queue_free()
+
+
+func _on_HitBox_body_entered(body):
+	if body.has_method("on_damage"):
+		body.on_damage(damage)

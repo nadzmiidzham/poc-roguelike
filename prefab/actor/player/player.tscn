@@ -21,7 +21,7 @@ radius = 4.42911
 height = 16.2034
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15.8618, 7.63746 )
+extents = Vector2( 5.87389, 11.2886 )
 
 [sub_resource type="Animation" id=3]
 length = 0.3
@@ -553,6 +553,30 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 5 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HitBox/HitBoxCollision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HitBox/HitBoxCollision:shape:extents")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.87389, 11.2886 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -2083,6 +2107,7 @@ script = ExtResource( 5 )
 position = Vector2( -1.41742, -1.986 )
 texture = ExtResource( 12 )
 hframes = 9
+frame = 5
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -2103,6 +2128,7 @@ collision_mask = 8
 collision_mask = 160
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
+position = Vector2( 10.5182, 0 )
 shape = SubResource( 2 )
 disabled = true
 
