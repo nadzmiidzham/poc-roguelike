@@ -10,7 +10,7 @@ onready var collision := $CollisionShape2D
 onready var hit_timer := $HitTimer
 
 onready var damageable := true
-onready var color_red := Color(1, 0, 0, 0.8)
+onready var color_damaged := Color(1, 0, 0, 0.8)
 
 
 func _process(_delta):
@@ -29,7 +29,7 @@ func on_damage(value: int) -> void:
 	if damageable:
 		damageable = false
 		hit_timer.start()
-		animated_sprite.self_modulate = color_red
+		animated_sprite.self_modulate = color_damaged
 		service.update_hp(service.get_hp() - value)
 
 
