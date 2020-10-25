@@ -21,7 +21,7 @@ radius = 4.42911
 height = 16.2034
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5.87389, 11.2886 )
+extents = Vector2( 5.25517, 12.322 )
 
 [sub_resource type="Animation" id=3]
 length = 0.3
@@ -2104,10 +2104,9 @@ collision_mask = 14
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.41742, -1.986 )
-texture = ExtResource( 12 )
-hframes = 9
-frame = 5
+position = Vector2( -0.643418, -3.70812 )
+texture = ExtResource( 1 )
+hframes = 7
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -2128,7 +2127,7 @@ collision_mask = 8
 collision_mask = 160
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
-position = Vector2( 10.5182, 0 )
+position = Vector2( 9.81111, 0 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -2165,8 +2164,8 @@ script = ExtResource( 7 )
 [node name="AttackSecondary" type="Node" parent="State"]
 script = ExtResource( 9 )
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
-[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 
 [editable path="HitBox"]
