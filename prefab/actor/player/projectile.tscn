@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/actor/player/attack_secondary.png" type="Texture" id=1]
+[ext_resource path="res://src/actor/player/Projectile.gd" type="Script" id=2]
+[ext_resource path="res://prefab/common/hit_box.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 288, 0, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 252, 0, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 216, 0, 36, 36 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 7.28334
+
+[node name="Projectile" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2.83653, 0 )
+frames = SubResource( 4 )
+frame = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -4.89819, -7.13037, 7.1988, -0.122463, -4.81477, 7.21916 )
+
+[node name="HitBox" parent="." instance=ExtResource( 3 )]
+collision_mask = 160
+
+[node name="HitBoxCollision" parent="HitBox" index="0"]
+shape = SubResource( 5 )
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_DeleteTimer_timeout"]
+
+[editable path="HitBox"]

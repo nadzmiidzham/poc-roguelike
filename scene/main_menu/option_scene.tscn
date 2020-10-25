@@ -1,15 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-<<<<<<< HEAD:scene/main_menu/option_scene.tscn
 [ext_resource path="res://scene/main_menu/sample_menu_scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/main_menu/option_scene.gd" type="Script" id=2]
-
-
-
-=======
-[ext_resource path="res://src/scene/main_menu/sample_menu_scene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/ui/main_menu/script/option_scene.gd" type="Script" id=2]
->>>>>>> develop:src/scene/main_menu/option_scene.tscn
 
 [node name="OptionScene" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
