@@ -6,11 +6,7 @@ signal spawn_projectile()
 export(String) var action_button := "attack_secondary"
 export(float) var timer_interval := 0.3
 export(Array) var combo = [
-	{
-		"animation": "attack_secondary",
-		"effect": null,
-		"damage": 1
-	}
+	{ "animation": "attack_secondary" }
 ]
 
 onready var combo_count := 0

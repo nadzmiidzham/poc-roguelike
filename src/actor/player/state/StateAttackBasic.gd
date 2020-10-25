@@ -4,21 +4,9 @@ extends State
 export(String) var action_button := "attack_basic"
 export(float) var timer_interval := 0.3
 export(Array) var combo = [
-	{
-		"animation": "attack_basic_1",
-		"effect": null,
-		"damage": 1
-	},
-	{
-		"animation": "attack_basic_2",
-		"effect": null,
-		"damage": 1
-	},
-	{
-		"animation": "attack_basic_3",
-		"effect": null,
-		"damage": 1
-	}
+	{ "animation": "attack_basic_1" },
+	{ "animation": "attack_basic_2" },
+	{ "animation": "attack_basic_3" }
 ]
 
 onready var combo_count := 0
