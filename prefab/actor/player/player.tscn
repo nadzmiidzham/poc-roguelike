@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/actor/player/player_idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/actor/player/player_run.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://prefab/common/hit_box.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/actor/player/PlayerModel.gd" type="Script" id=14]
 [ext_resource path="res://src/actor/player/PlayerService.gd" type="Script" id=15]
+[ext_resource path="res://src/actor/player/state/AttackSpecial.gd" type="Script" id=16]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.42911
@@ -2169,6 +2170,9 @@ script = ExtResource( 7 )
 
 [node name="AttackSecondary" type="Node" parent="State"]
 script = ExtResource( 9 )
+
+[node name="AttackSpecial" type="Node" parent="State"]
+script = ExtResource( 16 )
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]

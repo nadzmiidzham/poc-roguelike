@@ -1,9 +1,4 @@
-class_name State
-extends Node
-
-
-signal change_state(state_name)
-
+extends State
 
 func on_enter():
 	pass
