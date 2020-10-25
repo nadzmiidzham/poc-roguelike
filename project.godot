@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/object/box/BoxController.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "BoxModel",
 "language": "GDScript",
 "path": "res://src/object/box/BoxModel.gd"
@@ -23,6 +23,16 @@ _global_script_classes=[ {
 "class": "BoxService",
 "language": "GDScript",
 "path": "res://src/object/box/BoxService.gd"
+}, {
+"base": "Control",
+"class": "InteractPopup",
+"language": "GDScript",
+"path": "res://src/ui/interactable/InteractPopup.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://src/object/item/Item.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "PlayerController",
@@ -58,6 +68,8 @@ _global_script_class_icons={
 "BoxController": "",
 "BoxModel": "",
 "BoxService": "",
+"InteractPopup": "",
+"Item": "",
 "PlayerController": "",
 "PlayerModel": "",
 "PlayerService": "",
