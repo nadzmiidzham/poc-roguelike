@@ -10,7 +10,6 @@ export (int) var max_slide_speed := 100
 export (int) var jump_force := 550
 
 onready var projectile = preload("res://prefab/actor/player/projectile.tscn")
-onready var projectile_spawn_position := $ProjectileSpawnPosition
 onready var service := $Service
 onready var ground_check := $GroundCheck
 onready var front_check := $FrontCheck
