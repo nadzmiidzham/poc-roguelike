@@ -23,12 +23,13 @@ func _ready():
 
 # interupt state
 func _unhandled_input(event):
-	if !no_interrupt && event.is_action_pressed("attack_basic") && owner.is_grounded():
-		no_interrupt = true
-		current_state.emit_signal("change_state", "attack_basic")
-	if !no_interrupt && event.is_action_pressed("attack_secondary") && owner.is_grounded():
-		no_interrupt = true
-		current_state.emit_signal("change_state", "attack_secondary")
-	if !no_interrupt && event.is_action_pressed("attack_special") && owner.is_grounded():
-		no_interrupt = true
-		current_state.emit_signal("change_state", "attack_special")
+	if !no_interrupt && owner.is_grounded():
+		if event.is_action_pressed("attack_special"):
+			no_interrupt = true
+			current_state.emit_signal("change_state", "attack_special")
+		if event.is_action_pressed("attack_secondary"):
+			no_interrupt = true
+			current_state.emit_signal("change_state", "attack_secondary")
+		if event.is_action_pressed("attack_basic"):
+			no_interrupt = true
+			current_state.emit_signal("change_state", "attack_basic")
