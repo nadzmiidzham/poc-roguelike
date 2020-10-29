@@ -4,8 +4,6 @@ extends HBoxContainer
 
 export (float) var max_value := 100.0
 
-onready var cur_value := max_value
-
 onready var progress := $Progress
 onready var tween := $Tween
 

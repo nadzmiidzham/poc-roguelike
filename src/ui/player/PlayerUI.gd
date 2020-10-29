@@ -29,3 +29,9 @@ func _on_Player_on_attack(type):
 
 func _on_Player_on_hp_changed(value):
 	_set_hp(value)
+
+func _on_Player_on_ep_changed(value):
+	_set_ep(value)
+
+func _on_Player_on_xp_changed(value):
+	_set_xp(value)
