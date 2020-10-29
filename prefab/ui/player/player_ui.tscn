@@ -1,17 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/ui/player/hp_bar_inner.png" type="Texture" id=1]
-[ext_resource path="res://assets/ui/player/bar_border_large.png" type="Texture" id=2]
-[ext_resource path="res://assets/ui/player/hp_bar_label.png" type="Texture" id=3]
-[ext_resource path="res://assets/ui/player/ep_bar_inner.png" type="Texture" id=4]
-[ext_resource path="res://assets/ui/player/ep_bar_label.png" type="Texture" id=5]
-[ext_resource path="res://assets/ui/player/bar_border_small.png" type="Texture" id=6]
-[ext_resource path="res://assets/ui/player/lvl_bar_label.png" type="Texture" id=7]
-[ext_resource path="res://assets/ui/player/lvl_bar_inner.png" type="Texture" id=8]
-[ext_resource path="res://assets/ui/player/key_k.png" type="Texture" id=9]
-[ext_resource path="res://assets/ui/player/skill_cooldown.png" type="Texture" id=10]
-[ext_resource path="res://assets/ui/player/skill_border.png" type="Texture" id=11]
-[ext_resource path="res://assets/ui/player/key_l.png" type="Texture" id=12]
+[ext_resource path="res://prefab/ui/player/bar/hp_bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/ui/player/bar/xp_bar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefab/ui/player/bar/ep_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/ui/player/skill_trigger/secondary_skill_trigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefab/ui/player/skill_trigger/special_skill_trigger.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ui/player/PlayerUI.gd" type="Script" id=13]
 
 [node name="PlayerUI" type="Control"]
@@ -33,89 +26,21 @@ __meta__ = {
 
 [node name="BarContainer" type="VBoxContainer" parent="Bars"]
 margin_right = 446.0
-margin_bottom = 119.0
+margin_bottom = 115.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="XPBar" type="HBoxContainer" parent="Bars/BarContainer"]
-margin_left = 22.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Bars/BarContainer/XPBar"]
-margin_right = 38.0
-margin_bottom = 23.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Bars/BarContainer/XPBar/CenterContainer"]
-margin_top = 2.0
-margin_right = 38.0
-margin_bottom = 21.0
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureProgress" type="TextureProgress" parent="Bars/BarContainer/XPBar"]
-margin_left = 42.0
-margin_right = 424.0
-margin_bottom = 23.0
-value = 30.0
-texture_over = ExtResource( 6 )
-texture_progress = ExtResource( 8 )
-
-[node name="HPBar" type="HBoxContainer" parent="Bars/BarContainer"]
-margin_top = 27.0
+[node name="XPBar" parent="Bars/BarContainer" instance=ExtResource( 2 )]
 margin_right = 446.0
+
+[node name="HPBar" parent="Bars/BarContainer" instance=ExtResource( 1 )]
+margin_top = 27.0
 margin_bottom = 69.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Bars/BarContainer/HPBar"]
-margin_right = 60.0
-margin_bottom = 42.0
-
-[node name="TextureRect" type="TextureRect" parent="Bars/BarContainer/HPBar/CenterContainer"]
-margin_top = 2.0
-margin_right = 60.0
-margin_bottom = 40.0
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureProgress" type="TextureProgress" parent="Bars/BarContainer/HPBar"]
-margin_left = 64.0
-margin_right = 446.0
-margin_bottom = 42.0
-value = 30.0
-texture_over = ExtResource( 2 )
-texture_progress = ExtResource( 1 )
-
-[node name="EPBar" type="HBoxContainer" parent="Bars/BarContainer"]
+[node name="EPBar" parent="Bars/BarContainer" instance=ExtResource( 3 )]
 margin_top = 73.0
-margin_right = 446.0
 margin_bottom = 115.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Bars/BarContainer/EPBar"]
-margin_right = 60.0
-margin_bottom = 42.0
-
-[node name="TextureRect" type="TextureRect" parent="Bars/BarContainer/EPBar/CenterContainer"]
-margin_top = 2.0
-margin_right = 60.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureProgress" type="TextureProgress" parent="Bars/BarContainer/EPBar"]
-margin_left = 64.0
-margin_right = 446.0
-margin_bottom = 42.0
-value = 30.0
-texture_over = ExtResource( 2 )
-texture_progress = ExtResource( 4 )
 
 [node name="Skills" type="MarginContainer" parent="."]
 anchor_top = 1.0
@@ -134,50 +59,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkillSecondary" type="VBoxContainer" parent="Skills/SkillContainer"]
-margin_right = 166.0
+[node name="SecondarySkillTrigger" parent="Skills/SkillContainer" instance=ExtResource( 4 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
 margin_bottom = 158.0
+cooldown_duration = 3.0
 
-[node name="TextureProgress" type="TextureProgress" parent="Skills/SkillContainer/SkillSecondary"]
-margin_right = 166.0
-margin_bottom = 101.0
-texture_over = ExtResource( 11 )
-texture_progress = ExtResource( 10 )
-fill_mode = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="Skills/SkillContainer/SkillSecondary"]
-margin_top = 105.0
-margin_right = 166.0
-margin_bottom = 148.0
-
-[node name="TextureRect" type="TextureRect" parent="Skills/SkillContainer/SkillSecondary/CenterContainer"]
-margin_left = 61.0
-margin_right = 104.0
-margin_bottom = 43.0
-texture = ExtResource( 9 )
-
-[node name="SkillSpecial" type="VBoxContainer" parent="Skills/SkillContainer"]
-margin_left = 170.0
-margin_right = 336.0
+[node name="SpecialSkillTrigger" parent="Skills/SkillContainer" instance=ExtResource( 5 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_left = 168.0
+margin_top = 0.0
+margin_right = 332.0
 margin_bottom = 158.0
-
-[node name="TextureProgress" type="TextureProgress" parent="Skills/SkillContainer/SkillSpecial"]
-margin_right = 166.0
-margin_bottom = 101.0
-value = 50.0
-texture_over = ExtResource( 11 )
-texture_progress = ExtResource( 10 )
-fill_mode = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="Skills/SkillContainer/SkillSpecial"]
-margin_top = 105.0
-margin_right = 166.0
-margin_bottom = 147.0
-
-[node name="TextureRect" type="TextureRect" parent="Skills/SkillContainer/SkillSpecial/CenterContainer"]
-margin_left = 62.0
-margin_right = 104.0
-margin_bottom = 42.0
-texture = ExtResource( 12 )
-
-[node name="Tween" type="Tween" parent="."]
+cooldown_duration = 7.0

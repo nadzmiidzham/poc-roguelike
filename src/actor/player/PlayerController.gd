@@ -2,12 +2,8 @@ class_name PlayerController
 extends KinematicBody2D
 
 
-signal on_hp_changed(value)
 signal on_attack(type)
-
-enum ATTACK_TYPE {
-	SECONDARY, SPECIAL
-}
+signal on_hp_changed(value)
 
 export (int) var gravity := 20
 export (float) var wall_slide_gravity_rate := 1.5
@@ -27,7 +23,10 @@ onready var is_facing_right := true
 func _process(_delta):
 	if Input.is_action_just_pressed("attack_basic"):
 		emit_signal("on_hp_changed", 50)
-		emit_signal("on_attack", ATTACK_TYPE.SECONDARY)
+	if Input.is_action_just_pressed("attack_secondary"):
+		emit_signal("on_attack", "SECONDARY")
+	if Input.is_action_just_pressed("attack_special"):
+		emit_signal("on_attack", "SPECIAL")
 
 func _physics_process(_delta):
 	velocity.y += gravity

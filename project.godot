@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "BaseBar",
+"language": "GDScript",
+"path": "res://src/ui/player/BaseBar.gd"
+}, {
+"base": "VBoxContainer",
+"class": "BaseSkillTrigger",
+"language": "GDScript",
+"path": "res://src/ui/player/BaseSkillTrigger.gd"
+}, {
 "base": "StaticBody2D",
 "class": "BoxController",
 "language": "GDScript",
@@ -70,6 +80,8 @@ _global_script_classes=[ {
 "path": "res://src/common/state_machine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"BaseBar": "",
+"BaseSkillTrigger": "",
 "BoxController": "",
 "BoxModel": "",
 "BoxService": "",
