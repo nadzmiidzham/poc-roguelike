@@ -1,9 +1,6 @@
 extends BaseBar
 
 
-onready var xp_label := $Progress/HPLabel
-
-
 func _ready():
 	progress.value = 0.0
 
