@@ -3,9 +3,7 @@ extends KinematicBody2D
 
 
 signal on_attack(type)
-signal on_hp_changed(value)
-signal on_ep_changed(value)
-signal on_xp_changed(value)
+signal on_stat_changed(payload)
 
 export (int) var gravity := 20
 export (float) var wall_slide_gravity_rate := 1.5
@@ -15,22 +13,13 @@ export (int) var max_slide_speed := 100
 export (int) var jump_force := 550
 
 onready var projectile = preload("res://prefab/actor/player/projectile.tscn")
-onready var service := $Service
+onready var service := $Service as PlayerService
 onready var ground_check := $GroundCheck
 onready var front_check := $FrontCheck
 
 onready var velocity := Vector2.ZERO
 onready var is_facing_right := true
 
-func _process(_delta):
-	if Input.is_action_just_pressed("attack_basic"):
-		emit_signal("on_hp_changed", 50)
-		emit_signal("on_ep_changed", 30)
-		emit_signal("on_xp_changed", 60)
-	if Input.is_action_just_pressed("attack_secondary"):
-		emit_signal("on_attack", "SECONDARY")
-	if Input.is_action_just_pressed("attack_special"):
-		emit_signal("on_attack", "SPECIAL")
 
 func _physics_process(_delta):
 	velocity.y += gravity
