@@ -2,24 +2,24 @@ class_name PlayerService
 extends Node
 
 
-onready var model := $Model
+onready var model := $Model as PlayerModel
 
 
-func get_atk() -> int:
+func get_stat() -> PlayerModel:
+	return model as PlayerModel
+
+
+func attack() -> float:
 	return model.atk
 
-func get_max_hp() -> int:
-	return model.max_hp
-
-func get_hp() -> int:
+func damaged(damage: float) -> float:
+	model.set_hp(model.hp - damage)
 	return model.hp
 
+func consume_ep(ep_cost: float) -> float:
+	model.set_ep(model.ep - ep_cost)
+	return model.ep
 
-func update_max_hp(value: int) -> void:
-	model.max_hp = value
-
-func update_hp(value: int) -> void:
-	model.hp = clamp(value, 0, model.max_hp)
-
-func update_atk(value: int) -> void:
-	model.atk = value
+func received_xp(value: int) -> int:
+	model.set_xp(model.xp + value)
+	return model.xp
