@@ -23,3 +23,9 @@ func update_hp(value: int) -> void:
 
 func update_atk(value: int) -> void:
 	model.atk = value
+
+
+func damaged(value: float) -> void:
+	model.hp -= value
+	if model.hp <= 0:
+		model.hp = 0
