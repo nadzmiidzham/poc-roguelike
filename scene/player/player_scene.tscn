@@ -345,6 +345,4 @@ tile_data = PoolIntArray( 131071, 0, 1, 65536, 0, 2, 65551, 0, 1, 65552, 0, 2, 1
 
 [node name="PlayerUI" parent="UI" instance=ExtResource( 5 )]
 [connection signal="on_attack" from="Player" to="UI/PlayerUI" method="_on_Player_on_attack"]
-[connection signal="on_ep_changed" from="Player" to="UI/PlayerUI" method="_on_Player_on_ep_changed"]
-[connection signal="on_hp_changed" from="Player" to="UI/PlayerUI" method="_on_Player_on_hp_changed"]
-[connection signal="on_xp_changed" from="Player" to="UI/PlayerUI" method="_on_Player_on_xp_changed"]
+[connection signal="on_stat_changed" from="Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]
