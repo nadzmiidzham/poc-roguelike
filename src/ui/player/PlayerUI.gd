@@ -9,29 +9,20 @@ onready var secondary_skill_trigger := $Skills/SkillContainer/SecondarySkillTrig
 onready var special_skill_trigger := $Skills/SkillContainer/SpecialSkillTrigger
 
 
-func _set_hp(value: float):
-	hp_bar.set_cur_value(value)
-
-func _set_ep(value: float):
-	ep_bar.set_cur_value(value)
-
-func _set_xp(value: float):
-	xp_bar.set_cur_value(value)
-
-
 func _on_Player_on_attack(type):
 	match type:
-		"SECONDARY":
+		PlayerAttackType.SECONDARY:
 			secondary_skill_trigger.trigger_skill()
-		"SPECIAL":
+		PlayerAttackType.SPECIAL:
 			special_skill_trigger.trigger_skill()
 
 
-func _on_Player_on_hp_changed(value):
-	_set_hp(value)
+func _on_Player_on_stat_changed(payload):
+	var player_state = payload as PlayerModel
 
-func _on_Player_on_ep_changed(value):
-	_set_ep(value)
-
-func _on_Player_on_xp_changed(value):
-	_set_xp(value)
+	hp_bar.set_max_value(player_state.max_hp)
+	hp_bar.set_cur_value(player_state.hp)
+	ep_bar.set_max_value(player_state.max_ep)
+	ep_bar.set_cur_value(player_state.ep)
+	xp_bar.set_max_value(player_state.max_xp)
+	xp_bar.set_cur_value(player_state.xp)
