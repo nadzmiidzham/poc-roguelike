@@ -47,7 +47,7 @@ func on_damaged(value: float):
 func _on_AttackSecondary_spawn_projectile():
 	var projectile_instance = projectile.instance()
 
-	projectile_instance.damage = service.get_atk()
+	projectile_instance.damage = service.attack()
 	projectile_instance.direction = Vector2.RIGHT if is_facing_right else Vector2.LEFT
 	projectile_instance.position = get_global_position()
 	get_parent().add_child(projectile_instance)
