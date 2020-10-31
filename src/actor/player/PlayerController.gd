@@ -18,6 +18,10 @@ onready var velocity := Vector2.ZERO
 onready var is_facing_right := true
 
 
+func _process(_delta):
+	# print(str(service.get_hp()))
+	pass
+
 func _physics_process(_delta):
 	velocity.y += gravity
 	velocity = move_and_slide(velocity, Vector2.UP) # compute velocity
@@ -36,6 +40,9 @@ func is_grounded():
 func is_touching_wall():
 	return front_check.is_colliding()
 
+func on_damaged(value: float):
+	print("Player Damaged: " + str(value))
+
 
 func _on_AttackSecondary_spawn_projectile():
 	var projectile_instance = projectile.instance()
@@ -45,6 +52,9 @@ func _on_AttackSecondary_spawn_projectile():
 	projectile_instance.position = get_global_position()
 	get_parent().add_child(projectile_instance)
 
-func _on_HitBox_body_entered(body):
-	if body.has_method("on_damage"):
-		body.on_damage(service.attack())
+func _on_HitBox_area_entered(area):
+	if area.has_method("on_damaged"):
+		area.on_damaged(service.get_atk())
+
+func _on_HurtBox_on_damaged(value):
+	service.damaged(value)
