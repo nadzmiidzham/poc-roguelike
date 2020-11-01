@@ -43,11 +43,14 @@ func is_touching_wall():
 func _on_AttackSecondary_spawn_projectile():
 	var projectile_instance = projectile.instance()
 
-	projectile_instance.damage = service.get_atk()
+	projectile_instance.damage = service.attack()
 	projectile_instance.direction = Vector2.RIGHT if is_facing_right else Vector2.LEFT
 	projectile_instance.position = get_global_position()
 	get_parent().add_child(projectile_instance)
 
-func _on_HitBox_body_entered(body):
-	if body.has_method("on_damage"):
-		body.on_damage(service.get_atk())
+func _on_HitBox_area_entered(area):
+	if area.has_method("on_damaged"):
+		area.on_damaged(service.attack())
+
+func _on_HurtBox_on_damaged(value):
+	service.damaged(value)
