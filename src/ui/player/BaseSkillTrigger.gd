@@ -2,7 +2,7 @@ class_name BaseSkillTrigger
 extends VBoxContainer
 
 
-export (float) var cooldown_duration := 5
+export (float) var cooldown_duration := 5.0
 
 onready var progress := $TriggerProgress
 onready var cooldown_label := $TriggerProgress/CooldownLabel
