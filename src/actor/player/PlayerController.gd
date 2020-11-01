@@ -2,6 +2,9 @@ class_name PlayerController
 extends KinematicBody2D
 
 
+signal on_attack(type)
+signal on_stat_changed(payload)
+
 export (int) var gravity := 20
 export (float) var wall_slide_gravity_rate := 1.5
 export (int) var acceleration := 20

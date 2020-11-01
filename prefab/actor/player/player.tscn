@@ -15,7 +15,7 @@
 [ext_resource path="res://prefab/common/hit_box.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/actor/player/PlayerModel.gd" type="Script" id=14]
 [ext_resource path="res://src/actor/player/PlayerService.gd" type="Script" id=15]
-[ext_resource path="res://src/actor/player/state/AttackSpecial.gd" type="Script" id=16]
+[ext_resource path="res://src/actor/player/state/StateAttackSpecial.gd" type="Script" id=16]
 [ext_resource path="res://assets/actor/player/attack_special.png" type="Texture" id=17]
 [ext_resource path="res://prefab/common/hurt_box.tscn" type="PackedScene" id=18]
 
