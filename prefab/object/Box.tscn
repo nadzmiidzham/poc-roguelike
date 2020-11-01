@@ -52,6 +52,9 @@ collision_mask = 2147483648
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
 shape = SubResource( 3 )
 
+[node name="Timer" parent="HurtBox" index="1"]
+wait_time = 0.3
+
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true

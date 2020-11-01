@@ -26,11 +26,11 @@ height = 16.2034
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.25224, 12.322 )
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 4.35268
 height = 16.2781
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -178,7 +178,7 @@ tracks/11/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -326,7 +326,7 @@ tracks/11/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -474,7 +474,7 @@ tracks/11/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.45
 step = 0.05
 tracks/0/type = "value"
@@ -586,8 +586,7 @@ tracks/8/keys = {
 "values": [ Vector2( 5.87389, 11.2886 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "attack_special"
+[sub_resource type="Animation" id=8]
 length = 0.95
 step = 0.05
 tracks/0/type = "value"
@@ -713,7 +712,7 @@ tracks/9/keys = {
 "values": [ Vector2( 8.25224, 12.322 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -1016,7 +1015,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.65
 loop = true
 tracks/0/type = "value"
@@ -1320,7 +1319,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -1623,7 +1622,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.35
 loop = true
 tracks/0/type = "value"
@@ -1927,7 +1926,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.25
 loop = true
 tracks/0/type = "value"
@@ -2275,19 +2274,22 @@ collision_layer = 4
 collision_mask = 2147483648
 
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
-shape = SubResource( 13 )
+shape = SubResource( 3 )
+
+[node name="Timer" parent="HurtBox" index="1"]
+wait_time = 1.0
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/attack_basic_1 = SubResource( 3 )
-anims/attack_basic_2 = SubResource( 4 )
-anims/attack_basic_3 = SubResource( 5 )
-anims/attack_secondary = SubResource( 6 )
-anims/attack_special = SubResource( 7 )
-anims/fall = SubResource( 8 )
-anims/idle = SubResource( 9 )
-anims/jump = SubResource( 10 )
-anims/move = SubResource( 11 )
-anims/wall_slide = SubResource( 12 )
+anims/attack_basic_1 = SubResource( 4 )
+anims/attack_basic_2 = SubResource( 5 )
+anims/attack_basic_3 = SubResource( 6 )
+anims/attack_secondary = SubResource( 7 )
+anims/attack_special = SubResource( 8 )
+anims/fall = SubResource( 9 )
+anims/idle = SubResource( 10 )
+anims/jump = SubResource( 11 )
+anims/move = SubResource( 12 )
+anims/wall_slide = SubResource( 13 )
 
 [node name="Service" type="Node" parent="."]
 script = ExtResource( 15 )
@@ -2315,8 +2317,8 @@ script = ExtResource( 9 )
 script = ExtResource( 16 )
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
-[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 

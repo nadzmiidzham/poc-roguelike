@@ -25,7 +25,6 @@ func _physics_process(_delta):
 func _on_DeleteTimer_timeout():
 	self.queue_free()
 
-
-func _on_HitBox_body_entered(body):
-	if body.has_method("on_damage"):
-		body.on_damage(damage)
+func _on_HitBox_area_entered(area):
+	if area.has_method("on_damaged"):
+		area.on_damaged(damage)
