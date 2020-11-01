@@ -1,14 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://prefab/stage/stage_4_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefab/stage/next_stage.tscn" type="PackedScene" id=3]
 
 [node name="Stage4" type="Node2D"]
-
-[node name="NextStage" parent="." instance=ExtResource( 3 )]
-position = Vector2( 654.594, 330.285 )
-next_stage_prefab = "res://scene/stage/stage_1.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

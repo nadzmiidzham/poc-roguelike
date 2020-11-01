@@ -2,13 +2,12 @@
 
 [ext_resource path="res://prefab/stage/stage_1_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefab/stage/next_stage.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/stage/random_next_stage.tscn" type="PackedScene" id=4]
 
 [node name="Stage1" type="Node2D"]
 
-[node name="NextStage" parent="." instance=ExtResource( 3 )]
-position = Vector2( 634.618, 202.357 )
-next_stage_prefab = "res://scene/stage/stage_2.tscn"
+[node name="RandomNextStage" parent="." instance=ExtResource( 4 )]
+position = Vector2( 646.929, 202.165 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
