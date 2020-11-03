@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/End Portal Open.png-2e8de6e0c5a00e5f680bb7afaf127572.stex"
+path="res://.import/End Portal Open.png-8a238bced04cb4efae4bd1f3283ee3a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/object/portal/End Portal Open.png"
-dest_files=[ "res://.import/End Portal Open.png-2e8de6e0c5a00e5f680bb7afaf127572.stex" ]
+source_file="res://assets/object/gate/End Portal Open.png"
+dest_files=[ "res://.import/End Portal Open.png-8a238bced04cb4efae4bd1f3283ee3a2.stex" ]
 
 [params]
 

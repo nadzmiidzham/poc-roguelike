@@ -2,7 +2,7 @@
 
 [ext_resource path="res://prefab/stage/stage_3_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefab/stage/normal_gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=3]
 
 [node name="Stage3" type="Node2D"]
 
@@ -17,6 +17,7 @@ tile_data = PoolIntArray( 589823, 0, 0, 524288, 0, 1, 524289, 0, 1, 524290, 0, 2
 
 [node name="NormalGate" parent="." instance=ExtResource( 3 )]
 position = Vector2( 140.327, 229.517 )
+stage_list = [ "res://scene/stage/normal_stage/stage_1.tscn", "res://scene/stage/normal_stage/stage_2.tscn", "res://scene/player/player_scene.tscn" ]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 603.603, 404.686 )

@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 
 export (Array, String) var stage_list
@@ -15,8 +15,8 @@ func _process(_delta):
 		owner.get_tree().change_scene(next_stage)
 
 
-func _on_NormalGate_body_entered(body):
+func _on_GateArea_body_entered(body):
 	interactable = true
 
-func _on_NormalGate_body_exited(body):
+func _on_GateArea_body_exited(body):
 	interactable = false
