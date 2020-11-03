@@ -57,7 +57,7 @@ script = ExtResource( 2 )
 [node name="GateAnimation" parent="." index="0"]
 position = Vector2( 5.12192, -35.8867 )
 frames = SubResource( 10 )
-frame = 4
+frame = 11
 playing = true
 
 [node name="GateCollision" parent="GateArea" index="0"]

@@ -82,14 +82,10 @@ script = ExtResource( 1 )
 [node name="GateAnimation" parent="." index="0"]
 position = Vector2( -25.5, -33.5 )
 frames = SubResource( 16 )
-frame = 5
+frame = 8
 playing = true
 
-[node name="GateCollision" parent="GateArea" index="0"]
-position = Vector2( 0, 0.5 )
-shape = SubResource( 17 )
-
-[node name="InteractPopup" parent="." index="2"]
+[node name="InteractPopup" parent="." index="1"]
 visible = false
 margin_left = 8.01859
 margin_top = -36.6365
@@ -97,6 +93,10 @@ margin_right = 8.01859
 margin_bottom = -36.6365
 interact_label_text = "E"
 title_label_text = "Proceed To Final Stage"
+
+[node name="GateCollision" parent="GateArea" index="0"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 17 )
 
 [node name="InteractPopupAlt" parent="." index="3" instance=ExtResource( 4 )]
 visible = false
