@@ -26,6 +26,7 @@ frame = 2
 shape = SubResource( 1 )
 
 [node name="InteractPopup" parent="." index="2" instance=ExtResource( 4 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -7.68877
