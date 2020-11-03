@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/object/portal/End Portal Open.png" type="Texture" id=1]
 [ext_resource path="res://src/object/stage/NextStage.gd" type="Script" id=2]
+[ext_resource path="res://prefab/ui/interactable/interact_popup.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -55,10 +56,18 @@ stage_list = [ "res://scene/player/player_scene.tscn", "res://scene/stage/normal
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 4.49488, -29.217 )
 frames = SubResource( 9 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 10 )
+
+[node name="InteractPopup" parent="." instance=ExtResource( 3 )]
+margin_left = 22.0486
+margin_top = -15.749
+margin_right = 22.0486
+margin_bottom = -15.749
+interact_label_text = "E"
+title_label_text = "Go To Next Stage"
 [connection signal="body_entered" from="." to="." method="_on_NormalGate_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_NormalGate_body_exited"]
