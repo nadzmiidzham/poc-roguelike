@@ -38,6 +38,9 @@ func on_enter():
 	animation = owner.get_node("Animation")
 	animation.play(cur_animation_name)
 
+	# update ui
+	owner.emit_signal("on_attack", PlayerAttackType.SECONDARY)
+
 func on_exit():
 	combo_finished = false
 	timer_finished = false

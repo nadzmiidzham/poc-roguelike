@@ -40,14 +40,14 @@ frame = 2
 polygon = PoolVector2Array( -4.89819, -7.13037, 7.1988, -0.122463, -4.81477, 7.21916 )
 
 [node name="HitBox" parent="." instance=ExtResource( 3 )]
-collision_mask = 160
+collision_mask = 56
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
 shape = SubResource( 5 )
 
 [node name="DeleteTimer" type="Timer" parent="."]
 wait_time = 2.0
-[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="timeout" from="DeleteTimer" to="." method="_on_DeleteTimer_timeout"]
 
 [editable path="HitBox"]
