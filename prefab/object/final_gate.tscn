@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/object/gate/FinalGate.gd" type="Script" id=1]
 [ext_resource path="res://prefab/common/gate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/object/gate/End Portal Open.png" type="Texture" id=3]
 [ext_resource path="res://prefab/ui/interactable/interact_popup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://prefab/ui/loading_screen.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -83,7 +82,7 @@ script = ExtResource( 1 )
 [node name="GateAnimation" parent="." index="0"]
 position = Vector2( -25.5, -33.5 )
 frames = SubResource( 16 )
-frame = 20
+frame = 15
 playing = true
 
 [node name="GateCollision" parent="GateArea" index="0"]
@@ -105,11 +104,6 @@ margin_top = 9.07216
 margin_right = 7.90952
 margin_bottom = 9.07216
 title_label_text = "Loop Stage"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
-
-[node name="LoadingScreen" parent="CanvasLayer" index="0" instance=ExtResource( 5 )]
-visible = false
 [connection signal="body_entered" from="GateArea" to="." method="_on_GateArea_body_entered"]
 [connection signal="body_exited" from="GateArea" to="." method="_on_GateArea_body_exited"]
 

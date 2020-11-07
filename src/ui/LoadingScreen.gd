@@ -29,6 +29,7 @@ func _loading_start(path: String):
 func _loading_finished(resource: PackedScene):
 	thread.wait_to_finish()
 
+	# change scene
 	var next_scene = resource.instance()
 	get_tree().current_scene.queue_free()
 	get_tree().root.add_child(next_scene)

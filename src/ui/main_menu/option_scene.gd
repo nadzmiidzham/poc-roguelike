@@ -1,5 +1,8 @@
 extends Control
 
 
+signal on_back()
+
+
 func _on_ExitGameButton_pressed():
-	get_tree().change_scene("res://scene/main_menu/main_menu.tscn")
+	emit_signal("on_back")
