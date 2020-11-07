@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/ui/interactable/green_button08.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/player/key_e.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/interactable/InteractPopup.gd" type="Script" id=2]
 
 [node name="InteractPopup" type="Control"]
@@ -20,18 +20,6 @@ margin_right = 31.0
 margin_bottom = 29.0
 texture = ExtResource( 1 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="InteractLabel" type="Label" parent="Texture"]
-modulate = Color( 0, 0, 0, 1 )
-margin_right = 31.0
-margin_bottom = 29.0
-text = "A"
-align = 1
-valign = 1
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -8,7 +8,6 @@ onready var model := $Model as PlayerModel
 func get_stat() -> PlayerModel:
 	return model as PlayerModel
 
-
 func attack() -> float:
 	return model.atk
 

@@ -25,14 +25,14 @@ func on_destroyed():
 		collision.disabled = true
 		collision.visible = false
 
-func on_damage(value: int) -> void:
+
+func _on_HitTimer_timeout():
+	damageable = true
+	animated_sprite.self_modulate = Color(1, 1, 1, 1)
+
+func _on_HurtBox_on_damaged(value):
 	if damageable:
 		damageable = false
 		hit_timer.start()
 		animated_sprite.self_modulate = color_damaged
 		service.update_hp(service.get_hp() - value)
-
-
-func _on_HitTimer_timeout():
-	damageable = true
-	animated_sprite.self_modulate = Color(1, 1, 1, 1)
