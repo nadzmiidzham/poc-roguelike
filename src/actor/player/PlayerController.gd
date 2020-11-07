@@ -21,6 +21,13 @@ onready var velocity := Vector2.ZERO
 onready var is_facing_right := true
 
 
+func _process(_delta):
+	if Input.is_action_just_pressed("interact_alt"):
+		service.damaged(10)
+		service.consume_ep(5)
+		service.received_xp(20)
+		emit_signal("on_stat_changed", service.get_stat())
+
 func _physics_process(_delta):
 	velocity.y += gravity
 	velocity = move_and_slide(velocity, Vector2.UP) # compute velocity
