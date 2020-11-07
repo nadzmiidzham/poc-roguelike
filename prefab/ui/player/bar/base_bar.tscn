@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ui/player/hp_bar_label.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/player/hp_bar_inner.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/player/bar_border_large.png" type="Texture" id=3]
+[ext_resource path="res://src/ui/player/BaseBar.gd" type="Script" id=4]
+
+[node name="BaseBar" type="HBoxContainer"]
+margin_right = 446.0
+margin_bottom = 42.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 60.0
+margin_bottom = 42.0
+
+[node name="Label" type="TextureRect" parent="CenterContainer"]
+margin_top = 2.0
+margin_right = 60.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Progress" type="TextureProgress" parent="."]
+margin_left = 64.0
+margin_right = 446.0
+margin_bottom = 42.0
+value = 30.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
