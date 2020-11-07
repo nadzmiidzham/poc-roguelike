@@ -1,12 +1,12 @@
 class_name PlayerUI
-extends Control
+extends CanvasLayer
 
 
-onready var hp_bar := $Bars/BarContainer/HPBar
-onready var ep_bar := $Bars/BarContainer/EPBar
-onready var xp_bar := $Bars/BarContainer/XPBar
-onready var secondary_skill_trigger := $Skills/SkillContainer/SecondarySkillTrigger
-onready var special_skill_trigger := $Skills/SkillContainer/SpecialSkillTrigger
+onready var hp_bar := $PlayerUIControl/Bars/BarContainer/HPBar
+onready var ep_bar := $PlayerUIControl/Bars/BarContainer/EPBar
+onready var xp_bar := $PlayerUIControl/Bars/BarContainer/XPBar
+onready var secondary_skill_trigger := $PlayerUIControl/Skills/SkillContainer/SecondarySkillTrigger
+onready var special_skill_trigger := $PlayerUIControl/Skills/SkillContainer/SpecialSkillTrigger
 
 
 func _on_Player_on_attack(type):
@@ -15,7 +15,6 @@ func _on_Player_on_attack(type):
 			secondary_skill_trigger.trigger_skill()
 		PlayerAttackType.SPECIAL:
 			special_skill_trigger.trigger_skill()
-
 
 func _on_Player_on_stat_changed(payload):
 	var player_state = payload as PlayerModel
