@@ -2317,9 +2317,9 @@ script = ExtResource( 9 )
 script = ExtResource( 16 )
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
-[connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 
 [editable path="HitBox"]

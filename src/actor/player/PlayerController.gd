@@ -21,6 +21,7 @@ onready var velocity := Vector2.ZERO
 onready var is_facing_right := true
 
 
+# TODO: must remove before release full game (only for debugging purpose)
 func _process(_delta):
 	if Input.is_action_just_pressed("interact_alt"):
 		service.damaged(10)
