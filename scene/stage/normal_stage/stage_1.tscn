@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://prefab/stage/stage_1_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -6,10 +6,15 @@
 [ext_resource path="res://prefab/ui/player/player_ui.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/stage/Stage.gd" type="Script" id=5]
 [ext_resource path="res://prefab/ui/loading_ui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefab/common/scene_loader.tscn" type="PackedScene" id=7]
 
 [node name="Stage1" type="Node"]
 script = ExtResource( 5 )
 stage_list = [ "res://scene/stage/normal_stage/stage_2.tscn", "res://scene/stage/normal_stage/stage_3.tscn", "res://scene/player/player_scene.tscn" ]
+
+[node name="GameController" type="Node" parent="."]
+
+[node name="SceneLoader" parent="GameController" instance=ExtResource( 7 )]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -34,6 +39,9 @@ position = Vector2( 631.469, 212.868 )
 
 [node name="Player" parent="GameWorld" instance=ExtResource( 2 )]
 position = Vector2( 191.11, 293.515 )
+[connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
+[connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
+[connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
 [connection signal="on_interact" from="GameWorld/NormalGate" to="." method="_on_NormalGate_on_interact"]
 [connection signal="on_attack" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_attack"]
 [connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]

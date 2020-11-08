@@ -1,18 +1,34 @@
 extends Node
 
 
-onready var main_menu := $UI/MainMenuUI
-onready var option := $UI/OptionUI
+onready var scene_loader := $GameController/SceneLoader
+onready var main_menu_ui := $UI/MainMenuUI
+onready var option_ui := $UI/OptionUI
 onready var loading_ui := $UI/LoadingUI
 
 
 func _on_MainMenuUI_on_start_new_game():
-	loading_ui.load_scene("res://scene/stage/normal_stage/stage_1.tscn")
+	scene_loader.load_scene("res://scene/stage/normal_stage/stage_1.tscn")
+	loading_ui.visible = true
+	main_menu_ui.visible = false
+	option_ui.visible = false
 
 func _on_MainMenuUI_on_open_option():
-	main_menu.visible = false
-	option.visible = true
+	loading_ui.visible = false
+	main_menu_ui.visible = false
+	option_ui.visible = true
 
 func _on_OptionUI_on_back():
-	main_menu.visible = true
-	option.visible = false
+	loading_ui.visible = false
+	main_menu_ui.visible = true
+	option_ui.visible = false
+
+
+func _on_SceneLoader_on_start_load(max_value: int):
+	loading_ui.on_start_load(max_value)
+
+func _on_SceneLoader_on_update_load(value: float):
+	loading_ui.update_progress(value + 1)
+
+func _on_SceneLoader_on_finish_load():
+	loading_ui.on_finish_load()
