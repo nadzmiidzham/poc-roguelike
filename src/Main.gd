@@ -8,7 +8,7 @@ onready var loading_ui := $UI/LoadingUI
 
 
 func _on_MainMenuUI_on_start_new_game():
-	scene_loader.load_scene("res://scene/stage/normal_stage/stage_1.tscn")
+	scene_loader.load_scene("res://scene/stage/normal_stage/stage_1/stage_1.tscn")
 	loading_ui.visible = true
 	main_menu_ui.visible = false
 	option_ui.visible = false
