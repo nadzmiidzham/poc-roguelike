@@ -6,6 +6,7 @@ export (String) var final_stage_path
 
 onready var scene_loader := $GameController/SceneLoader
 onready var loading_ui := $UI/LoadingUI
+onready var camera := $GameWorld/Camera2D
 
 
 func _on_NormalGate_on_interact():
@@ -29,3 +30,6 @@ func _on_SceneLoader_on_update_load(value: float):
 
 func _on_SceneLoader_on_finish_load():
 	loading_ui.on_finish_load()
+
+func _door_on_enter(door: StaticBody2D):
+	print(door)
