@@ -31,5 +31,6 @@ func _on_SceneLoader_on_update_load(value: float):
 func _on_SceneLoader_on_finish_load():
 	loading_ui.on_finish_load()
 
-func _door_on_enter(door: StaticBody2D):
-	print(door)
+func _door_on_enter(door: StaticBody2D, exit_direction: Vector2):
+	var screen_size = get_viewport().get_visible_rect().size
+	camera.translate(Vector2(exit_direction.x * screen_size.x, exit_direction.y * screen_size.y))

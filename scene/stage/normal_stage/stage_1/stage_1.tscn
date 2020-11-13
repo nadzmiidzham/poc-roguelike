@@ -40,25 +40,29 @@ position = Vector2( 2048, 0 )
 [node name="Doors" type="Node" parent="GameWorld"]
 
 [node name="Door" parent="GameWorld/Doors" instance=ExtResource( 1 )]
-position = Vector2( 1008, 256 )
+position = Vector2( 1016, 256 )
+exit_direction = Vector2( 1, 0 )
 
 [node name="Exit" parent="GameWorld/Doors/Door" index="3"]
 position = Vector2( 48, 80 )
 
 [node name="Door2" parent="GameWorld/Doors" instance=ExtResource( 1 )]
-position = Vector2( 1040, 256 )
+position = Vector2( 1032, 256 )
+exit_direction = Vector2( -1, 0 )
 
 [node name="Exit" parent="GameWorld/Doors/Door2" index="3"]
 position = Vector2( -48, 80 )
 
 [node name="Door3" parent="GameWorld/Doors" instance=ExtResource( 1 )]
-position = Vector2( 2032, 480 )
+position = Vector2( 2040, 480 )
+exit_direction = Vector2( 1, 0 )
 
 [node name="Exit" parent="GameWorld/Doors/Door3" index="3"]
 position = Vector2( 48, 80 )
 
 [node name="Door4" parent="GameWorld/Doors" instance=ExtResource( 1 )]
-position = Vector2( 2064, 480 )
+position = Vector2( 2056, 480 )
+exit_direction = Vector2( -1, 0 )
 
 [node name="Exit" parent="GameWorld/Doors/Door4" index="3"]
 position = Vector2( -48, 80 )
