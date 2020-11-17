@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/object/box/BoxService.gd"
 }, {
+"base": "StaticBody2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://src/object/door/Door.gd"
+}, {
 "base": "Area2D",
 "class": "HurtBox",
 "language": "GDScript",
@@ -100,6 +105,7 @@ _global_script_class_icons={
 "BoxController": "",
 "BoxModel": "",
 "BoxService": "",
+"Door": "",
 "HurtBox": "",
 "InteractPopup": "",
 "Item": "",

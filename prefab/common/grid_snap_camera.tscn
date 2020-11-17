@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/common/GridSnapCamera.gd" type="Script" id=1]
+
+[node name="GridSnapCamera" type="Position2D"]
+script = ExtResource( 1 )
+player_node_path = NodePath("../Player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+smoothing_enabled = true
+editor_draw_drag_margin = true
