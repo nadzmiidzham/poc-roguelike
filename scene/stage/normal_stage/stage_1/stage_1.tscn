@@ -38,7 +38,7 @@ player_node_path = NodePath("../../Player")
 position = Vector2( 1024, 0 )
 
 [node name="Room3" parent="GameWorld/Rooms" instance=ExtResource( 9 )]
-position = Vector2( 1024, -608 )
+position = Vector2( 1024, -576 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 600, 360 )
