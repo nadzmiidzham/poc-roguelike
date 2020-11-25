@@ -28,6 +28,7 @@ visible = false
 [node name="GameWorld" type="Node" parent="."]
 
 [node name="GridSnapCamera" parent="GameWorld" instance=ExtResource( 1 )]
+player_node_path = NodePath("../../Player")
 
 [node name="Rooms" type="Node" parent="GameWorld"]
 
@@ -39,12 +40,8 @@ position = Vector2( 1024, 0 )
 [node name="Room3" parent="GameWorld/Rooms" instance=ExtResource( 9 )]
 position = Vector2( 1024, -608 )
 
-[node name="Player" parent="GameWorld" instance=ExtResource( 2 )]
-position = Vector2( 544, 392 )
-scale = Vector2( 2, 2 )
-collision_mask = 10
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 600, 360 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
-[connection signal="on_attack" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_attack"]
-[connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]

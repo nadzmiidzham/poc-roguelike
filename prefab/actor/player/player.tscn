@@ -21,7 +21,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.42911
-height = 16.2034
+height = 16.203
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.25517, 12.322 )
@@ -748,7 +748,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 19.5442 ]
+"values": [ 16.203 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionBox:position")
@@ -1355,7 +1355,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 19.5442 ]
+"values": [ 16.203 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionBox:position")
@@ -1659,7 +1659,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 14.1988 ]
+"values": [ 16.203 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionBox:position")
@@ -1963,7 +1963,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 15.8067 ]
+"values": [ 16.203 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionBox:position")
@@ -2232,28 +2232,32 @@ tracks/24/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 14
+collision_mask = 10
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.643418, -3.70812 )
-texture = ExtResource( 1 )
+position = Vector2( -4.03943, -3.92806 )
+texture = ExtResource( 11 )
 hframes = 7
+frame = 4
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="GroundCheck" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 15 )
 collision_mask = 8
 
 [node name="FrontCheck" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 cast_to = Vector2( 5, 0 )
 collision_mask = 8
 
 [node name="HitBox" parent="." instance=ExtResource( 13 )]
+visible = false
 collision_mask = 160
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
@@ -2262,6 +2266,7 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 18 )]
+visible = false
 collision_layer = 4
 collision_mask = 2147483648
 
