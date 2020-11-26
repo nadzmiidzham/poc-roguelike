@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://prefab/stage/stage_1_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://src/stage/Room.gd" type="Script" id=2]
 
 [node name="Room2" type="Node2D"]
-script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
