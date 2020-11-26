@@ -17,7 +17,6 @@ func _start_load(path: String):
 
 	while true:
 		emit_signal("on_update_load", resource_loader.get_stage())
-		OS.delay_msec(100) # delay by 100 miliseconds
 
 		var err = resource_loader.poll()
 		if err == ERR_FILE_EOF: # load operation has completed successfully
