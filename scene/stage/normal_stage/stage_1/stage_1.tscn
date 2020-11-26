@@ -42,6 +42,7 @@ position = Vector2( 1024, -576 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 600, 360 )
+scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
