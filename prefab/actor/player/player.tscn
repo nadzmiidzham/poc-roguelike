@@ -2244,19 +2244,16 @@ hframes = 4
 shape = SubResource( 1 )
 
 [node name="GroundCheck" type="RayCast2D" parent="."]
-visible = false
 enabled = true
 cast_to = Vector2( 0, 15 )
 collision_mask = 8
 
 [node name="FrontCheck" type="RayCast2D" parent="."]
-visible = false
 enabled = true
 cast_to = Vector2( 5, 0 )
 collision_mask = 8
 
 [node name="HitBox" parent="." instance=ExtResource( 13 )]
-visible = false
 collision_mask = 160
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
@@ -2265,7 +2262,6 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 18 )]
-visible = false
 collision_layer = 4
 collision_mask = 2147483648
 
@@ -2313,8 +2309,8 @@ script = ExtResource( 9 )
 script = ExtResource( 16 )
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
-[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 
