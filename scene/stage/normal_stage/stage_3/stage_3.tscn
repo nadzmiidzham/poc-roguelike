@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_3/stage_3_room_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefab/ui/player/player_ui.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/stage/Stage.gd" type="Script" id=5]
 [ext_resource path="res://prefab/ui/loading_ui.tscn" type="PackedScene" id=6]
@@ -19,7 +18,7 @@
 
 [node name="Stage3" type="Node"]
 script = ExtResource( 5 )
-stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_2/stage_2.tscn" ]
+stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/stage/normal_stage/stage_4/stage_4.tscn" ]
 final_stage_path = "res://scene/stage/final_stage/final_stage_1/final_stage_1.tscn"
 
 [node name="GameController" type="Node" parent="."]
@@ -101,11 +100,6 @@ position = Vector2( 2048, 0 )
 
 [node name="Gates" type="Node" parent="GameWorld"]
 
-[node name="NormalGate" parent="GameWorld/Gates" instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 2840, 400 )
-scale = Vector2( 0.5, 0.5 )
-
 [node name="FinalGate" parent="GameWorld/Gates" instance=ExtResource( 16 )]
 position = Vector2( 2840, 384 )
 scale = Vector2( 0.5, 0.5 )
@@ -116,7 +110,6 @@ scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
-[connection signal="on_interact" from="GameWorld/Gates/NormalGate" to="." method="_on_NormalGate_on_interact"]
 [connection signal="on_interact" from="GameWorld/Gates/FinalGate" to="." method="_on_FinalGate_on_interact"]
 [connection signal="on_attack" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_attack"]
 [connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]

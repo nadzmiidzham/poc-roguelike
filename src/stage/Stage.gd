@@ -9,11 +9,14 @@ onready var loading_ui := $UI/LoadingUI
 
 
 func _ready():
+	print("===")
 	print("stage_list: ", stage_list)
 	print("final_stage_path: ", final_stage_path)
+	print("===")
 
 
 func _on_NormalGate_on_interact():
+	print("rand_range(0, stage_list.size()): ", rand_range(0, stage_list.size()))
 	var next_stage_path = stage_list[int(rand_range(0, stage_list.size()))]
 	scene_loader.load_scene(next_stage_path)
 

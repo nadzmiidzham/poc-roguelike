@@ -17,7 +17,7 @@
 
 [node name="Stage2" type="Node"]
 script = ExtResource( 5 )
-stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn" ]
+stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn", "res://scene/stage/normal_stage/stage_4/stage_4.tscn" ]
 
 [node name="GameController" type="Node" parent="."]
 
