@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_1.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-back-trees.png" type="Texture" id=12]
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-middle-trees.png" type="Texture" id=13]
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-front-trees.png" type="Texture" id=14]
+[ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=15]
 
 [node name="Stage2" type="Node"]
 script = ExtResource( 5 )
@@ -97,7 +98,13 @@ position = Vector2( 1024, 576 )
 [node name="Gates" type="Node" parent="GameWorld"]
 
 [node name="NormalGate" parent="GameWorld/Gates" instance=ExtResource( 10 )]
-position = Vector2( 1536, 1056 )
+position = Vector2( 2936, 496 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Doors" type="Node" parent="GameWorld"]
+
+[node name="Door" parent="GameWorld/Doors" instance=ExtResource( 15 )]
+position = Vector2( 2048, 80 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Player" parent="GameWorld" instance=ExtResource( 9 )]

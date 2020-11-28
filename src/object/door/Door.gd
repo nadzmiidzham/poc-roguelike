@@ -1,21 +1,34 @@
 class_name Door
 extends StaticBody2D
 
+enum DoorState {
+	CLOSED,
+	OPENED
+}
 
-signal change_room(next_room_path)
+signal on_opened(door)
+signal on_closed(door)
 
-export(NodePath) var next_room_path
-export(bool) var active := true
+export(DoorState) var state := DoorState.OPENED
 
-onready var door_collision := $DoorCollision
-onready var door_area := $DoorArea
-
-
-func _process(_delta):
-	door_area.monitoring = active
-	door_collision.disabled = active
+onready var sprite := $AnimatedSprite
+onready var collision := $CollisionShape2D
 
 
-func _on_DoorArea_body_entered(body):
-	if active:
-		emit_signal("change_room", next_room_path)
+func _ready():
+	match state:
+		DoorState.CLOSED:
+			close()
+		DoorState.OPENED:
+			open()
+
+
+func open():
+	sprite.play("opening")
+	collision.disabled = true
+	emit_signal("on_opened", self)
+
+func close():
+	sprite.play("closing")
+	collision.disabled = false
+	emit_signal("on_closed", self)
