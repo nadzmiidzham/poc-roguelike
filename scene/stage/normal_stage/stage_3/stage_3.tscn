@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_3/stage_3_room_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -10,10 +10,15 @@
 [ext_resource path="res://scene/stage/normal_stage/stage_3/stage_3_room_2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/stage/normal_stage/stage_3/stage_3_room_3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefab/common/grid_snap_camera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-backgound.png" type="Texture" id=11]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-ring-planet.png" type="Texture" id=12]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-big-planet.png" type="Texture" id=13]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-far-planets.png" type="Texture" id=14]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-stars.png" type="Texture" id=15]
 
 [node name="Stage3" type="Node"]
 script = ExtResource( 5 )
-stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/player/player_scene.tscn" ]
+stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_2/stage_2.tscn" ]
 
 [node name="GameController" type="Node" parent="."]
 
@@ -29,6 +34,58 @@ visible = false
 [node name="GameWorld" type="Node" parent="."]
 
 [node name="GridSnapCamera" parent="GameWorld" instance=ExtResource( 10 )]
+
+[node name="Background" type="Node" parent="GameWorld"]
+
+[node name="parallax-space-backgound" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 512, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
+
+[node name="parallax-space-backgound2" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1536, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
+
+[node name="parallax-space-backgound3" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1536, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
+
+[node name="parallax-space-backgound4" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 2560, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
+
+[node name="parallax-space-stars" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 512, 290 )
+scale = Vector2( 3.29412, 2.775 )
+texture = ExtResource( 15 )
+
+[node name="parallax-space-stars2" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1536, 289 )
+scale = Vector2( 2.82353, 1.9875 )
+texture = ExtResource( 15 )
+
+[node name="parallax-space-stars3" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 2528, 348.5 )
+scale = Vector2( 1.64706, 1.14375 )
+texture = ExtResource( 15 )
+
+[node name="parallax-space-big-planet" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 2312, 384 )
+scale = Vector2( 3.99425, 3.99425 )
+texture = ExtResource( 13 )
+
+[node name="parallax-space-ring-planet" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1624, 320 )
+scale = Vector2( 3.16667, 3.16667 )
+texture = ExtResource( 12 )
+
+[node name="parallax-space-far-planets" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 520, 344 )
+scale = Vector2( 1.675, 1.675 )
+texture = ExtResource( 14 )
 
 [node name="Rooms" type="Node" parent="GameWorld"]
 

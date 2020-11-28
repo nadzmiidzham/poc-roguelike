@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://prefab/common/grid_snap_camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -10,10 +10,12 @@
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_room_1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_room_3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/environment/background/mountain-background/parallax-mountain-bg.png" type="Texture" id=11]
+[ext_resource path="res://assets/environment/background/mountain-background/parallax-mountain-montain-far.png" type="Texture" id=12]
 
 [node name="Stage1" type="Node"]
 script = ExtResource( 5 )
-stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn", "res://scene/player/player_scene.tscn" ]
+stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn" ]
 
 [node name="GameController" type="Node" parent="."]
 
@@ -30,6 +32,33 @@ visible = false
 
 [node name="GridSnapCamera" parent="GameWorld" instance=ExtResource( 1 )]
 player_node_path = NodePath("../../Player")
+
+[node name="Background" type="Node" parent="GameWorld"]
+
+[node name="Sprite" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 512, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
+
+[node name="Sprite6" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 512, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1536, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
+
+[node name="Sprite5" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1536, 288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="GameWorld/Background"]
+position = Vector2( 1536, -288 )
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 11 )
 
 [node name="Rooms" type="Node" parent="GameWorld"]
 
