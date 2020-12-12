@@ -16,25 +16,11 @@ onready var projectile = preload("res://prefab/actor/player/projectile.tscn")
 onready var service := $Service as PlayerService
 onready var ground_check := $GroundCheck
 onready var front_check := $FrontCheck
-onready var effect_animation := $EffectAnimation
+onready var state_machine := $State
 
 onready var velocity := Vector2.ZERO
 onready var is_facing_right := true
-onready var is_hurting := false
 
-
-# TODO: must remove before release full game (only for debugging purpose)
-func _process(_delta):
-	# TODO: remove this input statement (this is only for debug)
-	if Input.is_action_just_pressed("interact_alt"):
-		$HurtBox.on_damaged(10)
-		service.consume_ep(5)
-		service.received_xp(20)
-		emit_signal("on_stat_changed", service.get_stat())
-	if is_hurting:
-		effect_animation.play("hurting")
-	else:
-		effect_animation.stop()
 
 func _physics_process(_delta):
 	velocity.y += gravity
@@ -68,8 +54,8 @@ func _on_HitBox_area_entered(area):
 		area.on_damaged(service.attack())
 
 func _on_HurtBox_on_damaged(value):
-	service.damaged(value)
-	is_hurting = true
+	state_machine.trigger_hurt()
 
-func _on_HurtBox_on_hurtbox_active():
-	is_hurting = false
+	# TODO: for testing purpose, remove this before release
+	service.damaged(value)
+	emit_signal("on_stat_changed", service.get_stat())
