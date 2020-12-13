@@ -54,8 +54,6 @@ func _on_HitBox_area_entered(area):
 		area.on_damaged(service.attack())
 
 func _on_HurtBox_on_damaged(value):
-	state_machine.trigger_hurt()
-
-	# TODO: for testing purpose, remove this before release
 	service.damaged(value)
-	emit_signal("on_stat_changed", service.get_stat())
+	state_machine.trigger_hurt()
+	emit_signal('on_stat_changed', service.get_stat())

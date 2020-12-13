@@ -33,7 +33,7 @@ extents = Vector2( 5.25517, 12.322 )
 radius = 4.35268
 height = 16.2781
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=4]
 resource_name = "hurting"
 length = 0.2
 loop = true
@@ -2306,7 +2306,7 @@ tracks/24/keys = {
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
 collision_layer = 4
-collision_mask = 14
+collision_mask = 10
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -2334,6 +2334,7 @@ cast_to = Vector2( 5, 0 )
 collision_mask = 8
 
 [node name="HitBox" parent="." instance=ExtResource( 13 )]
+collision_layer = 0
 collision_mask = 160
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
@@ -2342,8 +2343,8 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 18 )]
-collision_layer = 4
-collision_mask = 2147483648
+collision_layer = 0
+collision_mask = 2147483968
 
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
 shape = SubResource( 3 )
@@ -2352,7 +2353,7 @@ shape = SubResource( 3 )
 wait_time = 1.0
 
 [node name="EffectAnimation" type="AnimationPlayer" parent="."]
-anims/hurting = SubResource( 16 )
+anims/hurting = SubResource( 4 )
 script = ExtResource( 21 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
@@ -2400,9 +2401,9 @@ script = ExtResource( 16 )
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
 [connection signal="animation_finished" from="EffectAnimation" to="State/Hurt" method="_on_EffectAnimation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/Hurt" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 
 [editable path="HitBox"]

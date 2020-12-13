@@ -9,13 +9,7 @@ onready var active := true
 onready var timer := $Timer
 
 
-# TODO: for testing purpose, remove this before relase
-func _process(_delta):
-	if Input.is_action_just_pressed("interact_alt"):
-		self.on_damaged(10)
-
-
-func on_damaged(value):
+func on_damaged(value: float):
 	if active:
 		emit_signal("on_damaged", value)
 		self.active = false
