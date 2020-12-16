@@ -2,6 +2,7 @@ extends StateMachine
 
 onready var idle := $Idle
 onready var move := $Move
+onready var hurt := $Hurt
 onready var attack_basic := $AttackBasic
 onready var attack_secondary := $AttackSecondary
 onready var attack_special := $AttackSpecial
@@ -11,11 +12,13 @@ func _ready():
 	state_map = {
 		'idle': idle,
 		'move': move,
+		'hurt': hurt,
 		'attack_basic': attack_basic,
 		'attack_secondary': attack_secondary,
 		'attack_special': attack_special
 	}
 	interrupt_state = [
+		'hurt',
 		'attack_basic',
 		'attack_secondary',
 		'attack_special'
@@ -33,3 +36,7 @@ func _unhandled_input(event):
 		if event.is_action_pressed("attack_basic"):
 			no_interrupt = true
 			current_state.emit_signal("change_state", "attack_basic")
+
+func trigger_hurt():
+	no_interrupt = true
+	current_state.emit_signal("change_state", "hurt")
