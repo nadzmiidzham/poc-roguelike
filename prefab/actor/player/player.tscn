@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/actor/player/player_idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/actor/player/player_run.png" type="Texture" id=2]
@@ -18,19 +18,40 @@
 [ext_resource path="res://src/actor/player/state/StateAttackSpecial.gd" type="Script" id=16]
 [ext_resource path="res://assets/actor/player/attack_special.png" type="Texture" id=17]
 [ext_resource path="res://prefab/common/hurt_box.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/actor/player/hurt_animation.png" type="Texture" id=19]
+[ext_resource path="res://src/actor/player/state/StateHurt.gd" type="Script" id=20]
+[ext_resource path="res://src/actor/player/EffectAnimation.gd" type="Script" id=21]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.42911
 height = 16.2034
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.25224, 12.322 )
+extents = Vector2( 5.25517, 12.322 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 4.35268
 height = 16.2781
 
 [sub_resource type="Animation" id=4]
+resource_name = "hurting"
+length = 0.2
+loop = true
+step = 0.005
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -178,7 +199,7 @@ tracks/11/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -326,7 +347,7 @@ tracks/11/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -474,7 +495,7 @@ tracks/11/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.45
 step = 0.05
 tracks/0/type = "value"
@@ -586,7 +607,7 @@ tracks/8/keys = {
 "values": [ Vector2( 5.87389, 11.2886 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.95
 step = 0.05
 tracks/0/type = "value"
@@ -712,7 +733,7 @@ tracks/9/keys = {
 "values": [ Vector2( 8.25224, 12.322 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -1015,7 +1036,59 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
+resource_name = "hurt"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=12]
 length = 0.65
 loop = true
 tracks/0/type = "value"
@@ -1319,7 +1392,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionBox:shape")
@@ -1622,7 +1695,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=14]
 length = 0.35
 loop = true
 tracks/0/type = "value"
@@ -1926,7 +1999,7 @@ tracks/24/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 length = 0.25
 loop = true
 tracks/0/type = "value"
@@ -2233,14 +2306,13 @@ tracks/24/keys = {
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
 collision_layer = 4
-collision_mask = 14
+collision_mask = 10
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2.38523, -7.73862 )
-texture = ExtResource( 17 )
-hframes = 10
-frame = 6
+position = Vector2( 0, -1.986 )
+texture = ExtResource( 8 )
+hframes = 15
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -2262,6 +2334,7 @@ cast_to = Vector2( 5, 0 )
 collision_mask = 8
 
 [node name="HitBox" parent="." instance=ExtResource( 13 )]
+collision_layer = 0
 collision_mask = 160
 
 [node name="HitBoxCollision" parent="HitBox" index="0"]
@@ -2270,8 +2343,8 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 18 )]
-collision_layer = 4
-collision_mask = 2147483648
+collision_layer = 0
+collision_mask = 2147483968
 
 [node name="HurtBoxCollision" parent="HurtBox" index="0"]
 shape = SubResource( 3 )
@@ -2279,17 +2352,22 @@ shape = SubResource( 3 )
 [node name="Timer" parent="HurtBox" index="1"]
 wait_time = 1.0
 
+[node name="EffectAnimation" type="AnimationPlayer" parent="."]
+anims/hurting = SubResource( 4 )
+script = ExtResource( 21 )
+
 [node name="Animation" type="AnimationPlayer" parent="."]
-anims/attack_basic_1 = SubResource( 4 )
-anims/attack_basic_2 = SubResource( 5 )
-anims/attack_basic_3 = SubResource( 6 )
-anims/attack_secondary = SubResource( 7 )
-anims/attack_special = SubResource( 8 )
-anims/fall = SubResource( 9 )
-anims/idle = SubResource( 10 )
-anims/jump = SubResource( 11 )
-anims/move = SubResource( 12 )
-anims/wall_slide = SubResource( 13 )
+anims/attack_basic_1 = SubResource( 5 )
+anims/attack_basic_2 = SubResource( 6 )
+anims/attack_basic_3 = SubResource( 7 )
+anims/attack_secondary = SubResource( 8 )
+anims/attack_special = SubResource( 9 )
+anims/fall = SubResource( 10 )
+anims/hurt = SubResource( 11 )
+anims/idle = SubResource( 12 )
+anims/jump = SubResource( 13 )
+anims/move = SubResource( 14 )
+anims/wall_slide = SubResource( 15 )
 
 [node name="Service" type="Node" parent="."]
 script = ExtResource( 15 )
@@ -2307,6 +2385,10 @@ script = ExtResource( 3 )
 [node name="Move" type="Node" parent="State"]
 script = ExtResource( 6 )
 
+[node name="Hurt" type="Node" parent="State"]
+script = ExtResource( 20 )
+hurt_duration = 1
+
 [node name="AttackBasic" type="Node" parent="State"]
 script = ExtResource( 7 )
 
@@ -2317,8 +2399,10 @@ script = ExtResource( 9 )
 script = ExtResource( 16 )
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
-[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="EffectAnimation" to="State/Hurt" method="_on_EffectAnimation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/Hurt" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 
