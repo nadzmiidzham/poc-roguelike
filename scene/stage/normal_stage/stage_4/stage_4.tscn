@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_4/stage_4_room_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -14,9 +14,10 @@
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-middle-trees.png" type="Texture" id=12]
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-front-trees.png" type="Texture" id=13]
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-lights.png" type="Texture" id=14]
-[ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prefab/object/auto_door.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prefab/object/hazard.tscn" type="PackedScene" id=16]
 
-[node name="Stage3" type="Node"]
+[node name="Stage4" type="Node"]
 script = ExtResource( 5 )
 stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn" ]
 final_stage_path = "res://scene/stage/final_stage/final_stage_1/final_stage_1.tscn"
@@ -35,6 +36,7 @@ visible = false
 [node name="GameWorld" type="Node" parent="."]
 
 [node name="GridSnapCamera" parent="GameWorld" instance=ExtResource( 10 )]
+player_node_path = NodePath("../../../Stage4/GameWorld/Player")
 
 [node name="Background" type="Node" parent="GameWorld"]
 
@@ -116,9 +118,26 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Doors" type="Node" parent="GameWorld"]
 
-[node name="Door" parent="GameWorld/Doors" instance=ExtResource( 15 )]
+[node name="AutoDoor" parent="GameWorld/Doors" instance=ExtResource( 15 )]
 position = Vector2( 2048, 448 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Hazards" type="Node" parent="GameWorld"]
+
+[node name="Hazard" parent="GameWorld/Hazards" instance=ExtResource( 16 )]
+position = Vector2( 1520.96, 495.917 )
+
+[node name="Hazard2" parent="GameWorld/Hazards" instance=ExtResource( 16 )]
+position = Vector2( 1489.54, 495.917 )
+
+[node name="Hazard3" parent="GameWorld/Hazards" instance=ExtResource( 16 )]
+position = Vector2( 1552.39, 495.917 )
+
+[node name="Hazard4" parent="GameWorld/Hazards" instance=ExtResource( 16 )]
+position = Vector2( 1767.91, 495.917 )
+
+[node name="Hazard5" parent="GameWorld/Hazards" instance=ExtResource( 16 )]
+position = Vector2( 1799.34, 495.917 )
 
 [node name="Player" parent="GameWorld" instance=ExtResource( 2 )]
 position = Vector2( 544, 488 )

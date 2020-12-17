@@ -12,7 +12,7 @@
 [ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/environment/background/mountain-background/parallax-mountain-bg.png" type="Texture" id=11]
 [ext_resource path="res://assets/environment/background/mountain-background/parallax-mountain-montain-far.png" type="Texture" id=12]
-[ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefab/object/auto_door.tscn" type="PackedScene" id=13]
 [ext_resource path="res://prefab/object/hazard.tscn" type="PackedScene" id=14]
 
 [node name="Stage1" type="Node"]
@@ -79,9 +79,9 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Doors" type="Node" parent="GameWorld"]
 
-[node name="Door" parent="GameWorld/Doors" instance=ExtResource( 13 )]
-position = Vector2( 1448, -152 )
-scale = Vector2( 0.5, 0.5 )
+[node name="AutoDoor" parent="GameWorld/Doors" instance=ExtResource( 13 )]
+position = Vector2( 1448, -160 )
+scale = Vector2( -0.5, 0.5 )
 
 [node name="Hazards" type="Node" parent="GameWorld"]
 

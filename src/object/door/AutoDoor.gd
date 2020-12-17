@@ -1,4 +1,4 @@
-class_name Door
+class_name AutoDoor
 extends StaticBody2D
 
 enum DoorState {
@@ -13,7 +13,8 @@ signal on_player_enter(door)
 export(DoorState) var state := DoorState.OPENED
 
 onready var sprite := $AnimatedSprite
-onready var collision := $CollisionShape2D
+onready var collision := $DoorCollision
+onready var detect_area := $DetectArea
 
 
 func _ready():
@@ -27,15 +28,16 @@ func _ready():
 func open():
 	emit_signal("on_opened", self)
 	state = DoorState.OPENED
-	collision.disabled = true
+	collision.set_deferred('disabled', true)
 	sprite.play("opening")
 
 func close():
 	emit_signal("on_closed", self)
 	state = DoorState.CLOSED
-	collision.disabled = false
+	collision.set_deferred('disabled', false)
 	sprite.play("closing")
 
 
-func _on_Area2D_body_entered(body):
+func _on_DetectArea_body_entered(body):
 	emit_signal("on_player_enter", self)
+	close()
