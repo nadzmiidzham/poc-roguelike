@@ -59,6 +59,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/object/item/Item.gd"
 }, {
+"base": "Area2D",
+"class": "MetroidDetectArea",
+"language": "GDScript",
+"path": "res://src/common/MetroidvaniaDetectArea.gd"
+}, {
+"base": "Camera2D",
+"class": "MetroidvaniaCamera",
+"language": "GDScript",
+"path": "res://src/common/MetroidvaniaCamera.gd"
+}, {
 "base": "Reference",
 "class": "PlayerAttackType",
 "language": "GDScript",
@@ -115,6 +125,8 @@ _global_script_class_icons={
 "HurtBox": "",
 "InteractPopup": "",
 "Item": "",
+"MetroidDetectArea": "",
+"MetroidvaniaCamera": "",
 "PlayerAttackType": "",
 "PlayerController": "",
 "PlayerModel": "",
