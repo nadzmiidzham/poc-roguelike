@@ -22,10 +22,6 @@ onready var screen_width: float = ProjectSettings.get("display/window/size/width
 var starting_position: bool = true
 
 
-func _ready():
-	if !starting_position:
-		position = entity.position
-
 func _process(_delta):
 	match behaviour:
 		Behaviour.HORIZONTAL:
@@ -50,13 +46,12 @@ func _process(_delta):
 			# 1. cam will not follow entity
 			# 2. cam will zoom out to fit boundary width
 			# 3. cam will be at the center of boundary
-			if !starting_position:
-				_zoom_to_fit_boundary_width(width)
-				_center_cam()
+			_zoom_to_fit_boundary_width(width)
+			_center_cam()
 
 
-func set_starting_position(value: bool):
-	starting_position = value
+func set_current_cam(value: bool):
+	current = value
 
 func set_cam_height(new_height: float):
 	height = new_height
@@ -84,8 +79,8 @@ func set_cam_boundary(top, bottom, left, right):
 	limit_right = right
 
 
-func get_starting_position():
-	return starting_position
+func get_current_cam():
+	return current
 
 func get_cam_height():
 	return height

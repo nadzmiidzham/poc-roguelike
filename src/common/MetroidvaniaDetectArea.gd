@@ -4,6 +4,7 @@ extends Area2D
 
 export(NodePath) var cam_path
 export(MetroidvaniaCamera.Behaviour) var cam_behaviour
+export(bool) var disabled
 
 onready var cam: MetroidvaniaCamera = get_node(cam_path)
 
@@ -18,19 +19,19 @@ onready var old_boundary = null
 onready var is_entered := false
 
 
-func _generate_height() -> float:
-	return abs(boundary_topleft.position.y - boundary_bottomright.position.y)
+func _process(_delta):
+	if disabled:
+		is_entered = false
 
-func _generate_width() -> float:
-	return abs(boundary_topleft.position.x - boundary_bottomright.position.x)
+	collision.disabled = disabled
 
 
 func _on_MetroidDetectArea_body_exited(_body):
 	is_entered = !is_entered
 	print('entered' if is_entered else 'exited')
 
-	if cam.get_starting_position():
-		cam.set_starting_position(false)
+	if !cam.get_current_cam():
+		cam.set_current_cam(true)
 
 	if is_entered:
 		old_behaviour = cam.get_cam_behaviour()
@@ -58,3 +59,13 @@ func _on_MetroidDetectArea_body_exited(_body):
 			old_boundary.left,
 			old_boundary.right
 		)
+
+
+func set_disabled(value: bool):
+	self.disabled = value
+
+func _generate_height() -> float:
+	return abs(boundary_topleft.position.y - boundary_bottomright.position.y)
+
+func _generate_width() -> float:
+	return abs(boundary_topleft.position.x - boundary_bottomright.position.x)
