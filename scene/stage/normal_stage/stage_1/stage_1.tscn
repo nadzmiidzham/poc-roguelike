@@ -10,7 +10,7 @@
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_room_1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_room_3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefab/common/metroidvania_detect_area.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/stage/StageController.gd" type="Script" id=11]
+[ext_resource path="res://prefab/stage/stage_controller.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_boss_room.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -33,8 +33,7 @@ stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://sce
 
 [node name="SceneLoader" parent="GameController" instance=ExtResource( 7 )]
 
-[node name="StageController" type="Node" parent="GameController"]
-script = ExtResource( 11 )
+[node name="StageController" parent="GameController" instance=ExtResource( 11 )]
 starting_detector_path = NodePath("../../GameWorld/Rooms/Room1/MetroidDetectArea")
 first_room_detector_path = NodePath("../../GameWorld/Rooms/Room2/MetroidDetectArea")
 
@@ -128,8 +127,6 @@ scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
-[connection signal="body_exited" from="GameWorld/Rooms/Room1/MetroidDetectArea" to="GameController/StageController" method="_on_starting_detector_exited"]
-[connection signal="body_exited" from="GameWorld/Rooms/Room2/MetroidDetectArea" to="GameController/StageController" method="_on_first_room_detector_exited"]
 [connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]
 
 [editable path="GameWorld/Rooms/Room1/MetroidDetectArea"]
