@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://prefab/common/grid_snap_camera.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/common/metroidvania_camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/stage/final_stage/final_stage_1/final_stage_1_room_1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefab/ui/player/player_ui.tscn" type="PackedScene" id=4]
@@ -9,10 +9,16 @@
 [ext_resource path="res://prefab/common/scene_loader.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scene/stage/final_stage/final_stage_1/final_stage_1_room_3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/stage/final_stage/final_stage_1/final_stage_1_room_2.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/environment/background/industrial-background/skill-desc_0002_far-buildings.png" type="Texture" id=10]
-[ext_resource path="res://assets/environment/background/industrial-background/skill-desc_0000_foreground.png" type="Texture" id=11]
-[ext_resource path="res://assets/environment/background/industrial-background/skill-desc_0003_bg.png" type="Texture" id=12]
-[ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scene/stage/final_stage/final_stage_1/final_stage_1_boss_room.tscn" type="PackedScene" id=10]
+[ext_resource path="res://prefab/common/metroidvania_detect_area.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 96, 7.99976 )
 
 [node name="FinalStage1" type="Node"]
 script = ExtResource( 5 )
@@ -31,72 +37,66 @@ visible = false
 
 [node name="GameWorld" type="Node" parent="."]
 
-[node name="GridSnapCamera" parent="GameWorld" instance=ExtResource( 1 )]
-player_node_path = NodePath("../../../FinalStage1/Player")
-
-[node name="Background" type="Node" parent="GameWorld"]
-
-[node name="Sprite" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 512, 288 )
-scale = Vector2( 3.76471, 3.6 )
-texture = ExtResource( 12 )
-
-[node name="Sprite2" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 1536, 288 )
-scale = Vector2( 3.76471, 3.6 )
-texture = ExtResource( 12 )
-
-[node name="Sprite3" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 2560, 288 )
-scale = Vector2( 3.76471, 3.6 )
-texture = ExtResource( 12 )
-
-[node name="skill-desc_0002_far-buildings" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 513.25, 351.5 )
-scale = Vector2( 4.81925, 3.14789 )
-texture = ExtResource( 10 )
-
-[node name="skill-desc_0002_far-buildings2" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 1968, 351.5 )
-scale = Vector2( 4.81925, 3.14789 )
-texture = ExtResource( 10 )
-
-[node name="skill-desc_0000_foreground" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 512, 416 )
-scale = Vector2( 3.76471, 3.06731 )
-texture = ExtResource( 11 )
-
-[node name="skill-desc_0000_foreground2" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 1536, 416 )
-scale = Vector2( 3.76471, 3.06731 )
-texture = ExtResource( 11 )
-
-[node name="skill-desc_0000_foreground3" type="Sprite" parent="GameWorld/Background"]
-position = Vector2( 2560, 416 )
-scale = Vector2( 3.76471, 3.06731 )
-texture = ExtResource( 11 )
+[node name="MetroidvaniaCamera" parent="GameWorld" instance=ExtResource( 1 )]
+entity_path = NodePath("../../Player")
 
 [node name="Rooms" type="Node" parent="GameWorld"]
 
 [node name="Room1" parent="GameWorld/Rooms" instance=ExtResource( 3 )]
 
+[node name="MetroidDetectArea" parent="GameWorld/Rooms/Room1" instance=ExtResource( 11 )]
+cam_path = NodePath("../../../MetroidvaniaCamera")
+cam_behaviour = 2
+starting_pos = true
+
+[node name="DetectAreaCollision" parent="GameWorld/Rooms/Room1/MetroidDetectArea" index="0"]
+position = Vector2( 472, 440 )
+shape = SubResource( 1 )
+
+[node name="TopLeftBoundary" parent="GameWorld/Rooms/Room1/MetroidDetectArea/Boundary" index="0"]
+position = Vector2( 8, 8 )
+
+[node name="BottomRightBoundary" parent="GameWorld/Rooms/Room1/MetroidDetectArea/Boundary" index="1"]
+position = Vector2( 1016, 568 )
+
 [node name="Room2" parent="GameWorld/Rooms" instance=ExtResource( 9 )]
 position = Vector2( 1024, 0 )
+
+[node name="MetroidDetectArea" parent="GameWorld/Rooms/Room2" instance=ExtResource( 11 )]
+cam_path = NodePath("../../../MetroidvaniaCamera")
+
+[node name="DetectAreaCollision" parent="GameWorld/Rooms/Room2/MetroidDetectArea" index="0"]
+position = Vector2( 0, 496 )
+rotation = -1.57079
+shape = SubResource( 2 )
+
+[node name="TopLeftBoundary" parent="GameWorld/Rooms/Room2/MetroidDetectArea/Boundary" index="0"]
+position = Vector2( 1032, 8 )
+
+[node name="BottomRightBoundary" parent="GameWorld/Rooms/Room2/MetroidDetectArea/Boundary" index="1"]
+position = Vector2( 3064, 568 )
 
 [node name="Room3" parent="GameWorld/Rooms" instance=ExtResource( 8 )]
 position = Vector2( 2048, 0 )
 
-[node name="Gates" type="Node" parent="GameWorld"]
+[node name="BossRoom" parent="GameWorld/Rooms" instance=ExtResource( 10 )]
+position = Vector2( 3072, 0 )
 
-[node name="Doors" type="Node" parent="GameWorld"]
+[node name="MetroidDetectArea" parent="GameWorld/Rooms/BossRoom" instance=ExtResource( 11 )]
+position = Vector2( -1024, 0 )
+cam_path = NodePath("../../../MetroidvaniaCamera")
+cam_behaviour = 1
 
-[node name="Door" parent="GameWorld/Doors" instance=ExtResource( 13 )]
-position = Vector2( 2048, 496 )
-scale = Vector2( 0.5, 0.5 )
+[node name="DetectAreaCollision" parent="GameWorld/Rooms/BossRoom/MetroidDetectArea" index="0"]
+position = Vector2( 1024, 144 )
+rotation = -1.57079
+shape = SubResource( 3 )
 
-[node name="Door2" parent="GameWorld/Doors" instance=ExtResource( 13 )]
-position = Vector2( 2048, 80 )
-scale = Vector2( 0.5, 0.5 )
+[node name="TopLeftBoundary" parent="GameWorld/Rooms/BossRoom/MetroidDetectArea/Boundary" index="0"]
+position = Vector2( 3080, 8 )
+
+[node name="BottomRightBoundary" parent="GameWorld/Rooms/BossRoom/MetroidDetectArea/Boundary" index="1"]
+position = Vector2( 4080, 1200 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 472, 440 )
@@ -104,3 +104,9 @@ scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
+
+[editable path="GameWorld/Rooms/Room1/MetroidDetectArea"]
+
+[editable path="GameWorld/Rooms/Room2/MetroidDetectArea"]
+
+[editable path="GameWorld/Rooms/BossRoom/MetroidDetectArea"]
