@@ -5,6 +5,7 @@ extends Area2D
 export(NodePath) var cam_path
 export(MetroidvaniaCamera.Behaviour) var cam_behaviour
 export(bool) var disabled
+export(bool) var starting_pos
 
 onready var cam: MetroidvaniaCamera = get_node(cam_path)
 
@@ -29,6 +30,9 @@ func _process(_delta):
 func _on_MetroidDetectArea_body_exited(_body):
 	is_entered = !is_entered
 	print('entered' if is_entered else 'exited')
+
+	if starting_pos:
+		disabled = true
 
 	if !cam.get_current_cam():
 		cam.set_current_cam(true)

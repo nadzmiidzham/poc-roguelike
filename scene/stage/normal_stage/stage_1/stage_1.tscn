@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://prefab/common/metroidvania_camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -10,11 +10,10 @@
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_room_1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_room_3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefab/common/metroidvania_detect_area.tscn" type="PackedScene" id=10]
-[ext_resource path="res://prefab/stage/stage_controller.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_boss_room.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 72, 8.00018 )
+extents = Vector2( 16, 8.00018 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 72, 8 )
@@ -32,10 +31,6 @@ stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://sce
 [node name="GameController" type="Node" parent="."]
 
 [node name="SceneLoader" parent="GameController" instance=ExtResource( 7 )]
-
-[node name="StageController" parent="GameController" instance=ExtResource( 11 )]
-starting_detector_path = NodePath("../../GameWorld/Rooms/Room1/MetroidDetectArea")
-first_room_detector_path = NodePath("../../GameWorld/Rooms/Room2/MetroidDetectArea")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -57,10 +52,12 @@ behaviour = 3
 
 [node name="MetroidDetectArea" parent="GameWorld/Rooms/Room1" instance=ExtResource( 10 )]
 cam_path = NodePath("../../../MetroidvaniaCamera")
+cam_behaviour = 2
+starting_pos = true
 
 [node name="DetectAreaCollision" parent="GameWorld/Rooms/Room1/MetroidDetectArea" index="0"]
-position = Vector2( 1024, 496 )
-rotation = 1.57079
+position = Vector2( 512, 520 )
+rotation = 4.71238
 shape = SubResource( 1 )
 
 [node name="TopLeftBoundary" parent="GameWorld/Rooms/Room1/MetroidDetectArea/Boundary" index="0"]

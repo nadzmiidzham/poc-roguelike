@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_1.tscn" type="PackedScene" id=2]
@@ -10,12 +10,11 @@
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_4.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefab/common/metroidvania_camera.tscn" type="PackedScene" id=10]
-[ext_resource path="res://prefab/stage/stage_controller.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefab/common/metroidvania_detect_area.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_boss_room.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 7.99994 )
+extents = Vector2( 16, 7.99994 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 8 )
@@ -33,10 +32,6 @@ stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://sce
 [node name="GameController" type="Node" parent="."]
 
 [node name="SceneLoader" parent="GameController" instance=ExtResource( 7 )]
-
-[node name="StageController" parent="GameController" instance=ExtResource( 11 )]
-starting_detector_path = NodePath("../../GameWorld/Rooms/Room1/MetroidDetectArea")
-first_room_detector_path = NodePath("../../GameWorld/Rooms/Room2/MetroidDetectArea")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -58,10 +53,11 @@ entity_path = NodePath("../Player")
 [node name="MetroidDetectArea" parent="GameWorld/Rooms/Room1" instance=ExtResource( 12 )]
 cam_path = NodePath("../../../MetroidvaniaCamera")
 cam_behaviour = 2
+starting_pos = true
 
 [node name="DetectAreaCollision" parent="GameWorld/Rooms/Room1/MetroidDetectArea" index="0"]
-position = Vector2( 1016, 80 )
-rotation = 1.57079
+position = Vector2( 312, 344 )
+rotation = -1.57079
 shape = SubResource( 1 )
 
 [node name="TopLeftBoundary" parent="GameWorld/Rooms/Room1/MetroidDetectArea/Boundary" index="0"]
@@ -77,7 +73,7 @@ position = Vector2( 1024, 0 )
 cam_path = NodePath("../../../MetroidvaniaCamera")
 
 [node name="DetectAreaCollision" parent="GameWorld/Rooms/Room2/MetroidDetectArea" index="0"]
-position = Vector2( 8, 80 )
+position = Vector2( 0, 80 )
 rotation = -1.57079
 shape = SubResource( 2 )
 
@@ -131,8 +127,6 @@ scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
-[connection signal="body_exited" from="GameWorld/Rooms/Room1/MetroidDetectArea" to="GameController/StageController" method="_on_starting_detector_exited"]
-[connection signal="body_exited" from="GameWorld/Rooms/Room2/MetroidDetectArea" to="GameController/StageController" method="_on_first_room_detector_exited"]
 [connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]
 
 [editable path="GameWorld/Rooms/Room1/MetroidDetectArea"]
