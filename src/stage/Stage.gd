@@ -10,13 +10,6 @@ onready var scene_loader := get_node(scene_loader_path)
 onready var loading_ui := get_node(loading_ui_path)
 
 
-func _ready():
-	print("===")
-	print("stage_list: ", stage_list)
-	print("final_stage_path: ", final_stage_path)
-	print("===")
-
-
 func _on_NormalGate_on_interact():
 	print("rand_range(0, stage_list.size()): ", rand_range(0, stage_list.size()))
 	var next_stage_path = stage_list[int(rand_range(0, stage_list.size()))]
