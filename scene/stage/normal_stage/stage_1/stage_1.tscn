@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://prefab/common/metroidvania_camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://prefab/common/metroidvania_detect_area.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefab/object/hazard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=12]
+[ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scene/stage/normal_stage/stage_1/stage_1_boss_room.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -27,12 +28,16 @@ extents = Vector2( 72, 10 )
 extents = Vector2( 64, 8 )
 
 [node name="Stage1" type="Node"]
-script = ExtResource( 5 )
-stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn", "res://scene/stage/normal_stage/stage_4/stage_4.tscn" ]
 
 [node name="GameController" type="Node" parent="."]
 
 [node name="SceneLoader" parent="GameController" instance=ExtResource( 7 )]
+
+[node name="StageController" type="Node" parent="GameController"]
+script = ExtResource( 5 )
+stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_2.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn", "res://scene/stage/normal_stage/stage_4/stage_4.tscn" ]
+scene_loader_path = NodePath("../SceneLoader")
+loading_ui_path = NodePath("../../UI/LoadingUI")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -137,12 +142,19 @@ position = Vector2( 2112, -48 )
 position = Vector2( 1024, -160 )
 scale = Vector2( 0.5, 0.5 )
 
+[node name="Gates" type="Node" parent="GameWorld"]
+
+[node name="NormalGate" parent="GameWorld/Gates" instance=ExtResource( 13 )]
+position = Vector2( 576, -88 )
+scale = Vector2( 0.5, 0.5 )
+
 [node name="Player" parent="GameWorld" instance=ExtResource( 2 )]
 position = Vector2( 512, 520 )
 scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
+[connection signal="on_interact" from="GameWorld/Gates/NormalGate" to="GameController/StageController" method="_on_NormalGate_on_interact"]
 [connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]
 
 [editable path="GameWorld/Rooms/Room1/MetroidDetectArea"]
