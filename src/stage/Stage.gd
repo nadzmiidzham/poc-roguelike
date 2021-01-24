@@ -3,16 +3,11 @@ extends Node
 
 export (Array, String) var stage_list
 export (String) var final_stage_path
+export (NodePath) var scene_loader_path
+export (NodePath) var loading_ui_path
 
-onready var scene_loader := $GameController/SceneLoader
-onready var loading_ui := $UI/LoadingUI
-
-
-func _ready():
-	print("===")
-	print("stage_list: ", stage_list)
-	print("final_stage_path: ", final_stage_path)
-	print("===")
+onready var scene_loader := get_node(scene_loader_path)
+onready var loading_ui := get_node(loading_ui_path)
 
 
 func _on_NormalGate_on_interact():
