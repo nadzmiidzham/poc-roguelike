@@ -46,7 +46,7 @@ func _process(_delta):
 			# 1. cam will not follow entity
 			# 2. cam will zoom out to fit boundary width
 			# 3. cam will be at the center of boundary
-			_zoom_to_fit_boundary_width(width)
+			_zoom_to_fit_boundary(height, width)
 			_center_cam()
 
 
@@ -122,3 +122,13 @@ func _zoom_to_fit_boundary_width(width: float):
 
 	var zoom_ratio = width / screen_width
 	zoom = Vector2(zoom_ratio, zoom_ratio)
+
+func _zoom_to_fit_boundary(height: float, width: float):
+	if (width <= 0) || (width == screen_width):
+		return
+	if (height <= 0) || (height == screen_height):
+		return
+
+	var height_zoom_ratio = height / screen_height
+	var width_zoom_ratio = width / screen_width
+	zoom = Vector2(width_zoom_ratio, height_zoom_ratio)
