@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_3/stage_3_room_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefab/common/metroidvania_camera.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-backgound.png" type="Texture" id=13]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-big-planet.png" type="Texture" id=14]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-ring-planet.png" type="Texture" id=15]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-far-planets.png" type="Texture" id=16]
+[ext_resource path="res://assets/environment/background/space-background/parallax-space-stars.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -43,6 +48,49 @@ visible = false
 smoothing_enabled = true
 entity_path = NodePath("../Player")
 behaviour = 3
+
+[node name="Background" type="Node" parent="GameWorld"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="GameWorld/Background"]
+scroll_ignore_camera_zoom = true
+
+[node name="Background" type="ParallaxLayer" parent="GameWorld/Background/ParallaxBackground"]
+motion_mirroring = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="GameWorld/Background/ParallaxBackground/Background"]
+scale = Vector2( 3.76471, 3.6 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="Middleground" type="ParallaxLayer" parent="GameWorld/Background/ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+
+[node name="Sprite" type="Sprite" parent="GameWorld/Background/ParallaxBackground/Middleground"]
+position = Vector2( 128, 328 )
+scale = Vector2( 3.4023, 3.4023 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="GameWorld/Background/ParallaxBackground/Middleground"]
+position = Vector2( 792, 128 )
+scale = Vector2( 2.66667, 2.66667 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="Foreground" type="ParallaxLayer" parent="GameWorld/Background/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+
+[node name="Sprite" type="Sprite" parent="GameWorld/Background/ParallaxBackground/Foreground"]
+position = Vector2( 328, 240 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="GameWorld/Background/ParallaxBackground/Foreground"]
+position = Vector2( 224, 128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 17 )
+centered = false
 
 [node name="Rooms" type="Node" parent="GameWorld"]
 
