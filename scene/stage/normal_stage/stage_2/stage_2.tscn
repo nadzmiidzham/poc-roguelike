@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_room_1.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefab/common/metroidvania_detect_area.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scene/stage/normal_stage/stage_2/stage_2_boss_room.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefab/object/normal_gate.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 7.99994 )
@@ -135,12 +136,17 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Gates" type="Node" parent="GameWorld"]
 
+[node name="NormalGate" parent="GameWorld/Gates" instance=ExtResource( 14 )]
+position = Vector2( 4416, 928 )
+scale = Vector2( 0.5, 0.5 )
+
 [node name="Player" parent="GameWorld" instance=ExtResource( 9 )]
 position = Vector2( 312, 344 )
 scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
+[connection signal="on_interact" from="GameWorld/Gates/NormalGate" to="GameController/StageController" method="_on_NormalGate_on_interact"]
 [connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]
 
 [editable path="GameWorld/Rooms/Room1/MetroidDetectArea"]
