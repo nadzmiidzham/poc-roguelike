@@ -39,7 +39,7 @@ extents = Vector2( 64, 8 )
 
 [node name="StageController" type="Node" parent="GameController"]
 script = ExtResource( 5 )
-stage_list = [ "res://scene/stage/normal_stage/stage_2/stage_1.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn", "res://scene/stage/normal_stage/stage_4/stage_4.tscn" ]
+stage_list = [ "res://scene/stage/normal_stage/stage_1/stage_1.tscn", "res://scene/stage/normal_stage/stage_3/stage_3.tscn", "res://scene/stage/normal_stage/stage_4/stage_4.tscn" ]
 scene_loader_path = NodePath("../SceneLoader")
 loading_ui_path = NodePath("../../UI/LoadingUI")
 
