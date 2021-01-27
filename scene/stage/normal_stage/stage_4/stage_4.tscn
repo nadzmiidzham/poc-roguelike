@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scene/stage/normal_stage/stage_4/stage_4_room_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/actor/player/player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-front-trees.png" type="Texture" id=13]
 [ext_resource path="res://assets/environment/background/forest-background/parallax-forest-lights.png" type="Texture" id=14]
 [ext_resource path="res://prefab/object/final_gate.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prefab/object/door.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 16 )
@@ -130,6 +131,10 @@ position = Vector2( 2064, 16 )
 position = Vector2( 3056, 560 )
 
 [node name="Doors" type="Node" parent="GameWorld"]
+
+[node name="Door" parent="GameWorld/Doors" instance=ExtResource( 16 )]
+position = Vector2( 2048, 448 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Gates" type="Node" parent="GameWorld"]
 
