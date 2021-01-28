@@ -2,7 +2,6 @@
 
 [ext_resource path="res://prefab/stage/final_stage_tileset.tres" type="TileSet" id=1]
 
-
 [node name="Room1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
