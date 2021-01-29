@@ -16,7 +16,6 @@ func _on_Player_on_attack(type):
 		PlayerAttackType.SPECIAL:
 			special_skill_trigger.trigger_skill()
 
-
 func _on_Player_on_stat_changed(payload):
 	var player_state = payload as PlayerModel
 

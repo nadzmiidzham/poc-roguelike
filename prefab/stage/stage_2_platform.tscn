@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://prefab/stage/stage_2_tileset.tres" type="TileSet" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 184, 16 )
+
+[node name="Stage2Platform" type="StaticBody2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -11, 0, 0, -10, 0, 1, -9, 0, 1, -8, 0, 1, -7, 0, 1, -6, 0, 1, -5, 0, 1, -4, 0, 1, -3, 0, 1, -2, 0, 1, -1, 0, 1, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 2, 65525, 0, 131072, 65526, 0, 131073, 65527, 0, 131073, 65528, 0, 131073, 65529, 0, 131073, 65530, 0, 131073, 65531, 0, 131073, 65532, 0, 131073, 65533, 0, 131073, 65534, 0, 131073, 65535, 0, 131073, 0, 0, 131073, 1, 0, 131073, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 131073, 10, 0, 131073, 11, 0, 131074 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 0 )
+shape = SubResource( 1 )
+one_way_collision = true

@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://prefab/common/gate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/object/gate/NormalGate.gd" type="Script" id=2]
+[ext_resource path="res://assets/object/gate/End Portal Open.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 960, 0, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 1280, 0, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 1600, 0, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 320, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 320, 320, 320 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 640, 320, 320, 320 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 8 ), SubResource( 7 ), SubResource( 6 ), SubResource( 5 ), SubResource( 4 ), SubResource( 3 ), SubResource( 2 ), SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 54.6091, 85.76 )
+
+[node name="NormalGate" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="GateAnimation" parent="." index="0"]
+position = Vector2( 5.12192, -35.8867 )
+frames = SubResource( 10 )
+frame = 5
+playing = true
+
+[node name="GateCollision" parent="GateArea" index="0"]
+shape = SubResource( 11 )
+
+[node name="InteractPopup" parent="." index="2"]
+visible = false
+margin_left = 6.55505
+margin_top = -36.5551
+margin_right = 6.55505
+margin_bottom = -36.5551
+title_label_text = "Proceed To Next Stage"
+[connection signal="body_entered" from="GateArea" to="." method="_on_GateArea_body_entered"]
+[connection signal="body_exited" from="GateArea" to="." method="_on_GateArea_body_exited"]

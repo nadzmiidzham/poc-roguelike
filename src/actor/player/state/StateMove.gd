@@ -54,6 +54,9 @@ func physics_process(_delta):
 
 	# jump
 	if owner.is_grounded() && Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("down"): # drop through passable platform
+			owner.position.y += 1
+			return
 		owner.velocity.y = -owner.jump_force
 
 	# wall slide
