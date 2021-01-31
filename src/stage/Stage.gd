@@ -5,6 +5,7 @@ export (Array, String) var stage_list
 export (String) var final_stage_path
 export (NodePath) var scene_loader_path
 export (NodePath) var loading_ui_path
+export (PackedScene) var game_over_scene
 
 onready var scene_loader := get_node(scene_loader_path)
 onready var loading_ui := get_node(loading_ui_path)
@@ -32,3 +33,8 @@ func _on_SceneLoader_on_update_load(value: float):
 
 func _on_SceneLoader_on_finish_load():
 	loading_ui.on_finish_load()
+
+
+func _on_Player_on_die():
+	print('test player died')
+	get_tree().change_scene(game_over_scene.resource_path)
