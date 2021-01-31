@@ -735,7 +735,7 @@ tracks/9/keys = {
 "values": [ Vector2( 8.25224, 12.322 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 resource_name = "die"
 length = 1.5
 tracks/0/type = "value"
@@ -799,7 +799,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, -1.986 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=18]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -1030,8 +1030,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "hurt"
+[sub_resource type="Animation" id=19]
 length = 0.45
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -1082,7 +1081,7 @@ tracks/3/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=20]
 length = 0.65
 loop = true
 tracks/0/type = "value"
@@ -1314,7 +1313,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=21]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -1545,7 +1544,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=22]
 length = 0.35
 loop = true
 tracks/0/type = "value"
@@ -1777,7 +1776,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.25
 loop = true
 tracks/0/type = "value"
@@ -2016,7 +2015,7 @@ script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -1.986 )
-texture = ExtResource( 23 )
+texture = ExtResource( 8 )
 hframes = 15
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -2061,13 +2060,13 @@ anims/attack_basic_2 = SubResource( 6 )
 anims/attack_basic_3 = SubResource( 7 )
 anims/attack_secondary = SubResource( 8 )
 anims/attack_special = SubResource( 9 )
-anims/die = SubResource( 16 )
-anims/fall = SubResource( 10 )
-anims/hurt = SubResource( 11 )
-anims/idle = SubResource( 12 )
-anims/jump = SubResource( 13 )
-anims/move = SubResource( 14 )
-anims/wall_slide = SubResource( 15 )
+anims/die = SubResource( 17 )
+anims/fall = SubResource( 18 )
+anims/hurt = SubResource( 19 )
+anims/idle = SubResource( 20 )
+anims/jump = SubResource( 21 )
+anims/move = SubResource( 22 )
+anims/wall_slide = SubResource( 16 )
 
 [node name="Service" type="Node" parent="."]
 script = ExtResource( 15 )
@@ -2091,6 +2090,7 @@ hurt_duration = 1
 
 [node name="Die" type="Node" parent="State"]
 script = ExtResource( 22 )
+player_model_path = NodePath("../../Service/Model")
 
 [node name="AttackBasic" type="Node" parent="State"]
 script = ExtResource( 7 )
@@ -2103,10 +2103,12 @@ script = ExtResource( 16 )
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
 [connection signal="animation_finished" from="EffectAnimation" to="State/Hurt" method="_on_EffectAnimation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/Die" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/Hurt" method="_on_Animation_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="player_died" from="State/Die" to="." method="_on_Die_player_died"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 
 [editable path="HitBox"]

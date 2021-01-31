@@ -2,6 +2,7 @@ class_name PlayerController
 extends KinematicBody2D
 
 
+signal on_die
 signal on_attack(type)
 signal on_stat_changed(payload)
 
@@ -56,8 +57,10 @@ func _on_HitBox_area_entered(area):
 func _on_HurtBox_on_damaged(value):
 	var player_hp = service.damaged(value)
 	if player_hp <= 0:
-		print('Player died')
 		state_machine.trigger_die()
 	else:
 		state_machine.trigger_hurt()
 	emit_signal('on_stat_changed', service.get_stat())
+
+func _on_Die_player_died():
+	emit_signal('on_die')

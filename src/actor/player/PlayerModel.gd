@@ -46,14 +46,5 @@ func set_xp(value: int) -> void:
 
 
 func to_string():
-	return """
-		{
-			max_hp: " + str(max_hp) + ",
-			hp: " + str(hp) + ",
-			max_ep: " + str(max_ep) + ",
-			ep: " + str(ep) + ",
-			max_xp: " + str(max_xp) + ",
-			xp: " + str(xp) + ",
-			atk: " + str(atk) + "
-		}
-		"""
+	return "PlayerModel: { max_hp: " + str(max_hp) + ", hp: " + str(hp) + ", max_ep: " + str(max_ep) + ", ep: " + str(ep) + ", max_xp: " + str(max_xp) + ", xp: " + str(xp) + ", atk: " + str(atk) + " } "
+
