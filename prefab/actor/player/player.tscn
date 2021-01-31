@@ -735,7 +735,7 @@ tracks/9/keys = {
 "values": [ Vector2( 8.25224, 12.322 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=10]
 resource_name = "die"
 length = 1.5
 tracks/0/type = "value"
@@ -799,7 +799,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, -1.986 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=11]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -1030,7 +1030,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=12]
 length = 0.45
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -1081,7 +1081,7 @@ tracks/3/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=13]
 length = 0.65
 loop = true
 tracks/0/type = "value"
@@ -1313,7 +1313,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=14]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -1544,7 +1544,7 @@ tracks/18/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=15]
 length = 0.35
 loop = true
 tracks/0/type = "value"
@@ -2060,12 +2060,12 @@ anims/attack_basic_2 = SubResource( 6 )
 anims/attack_basic_3 = SubResource( 7 )
 anims/attack_secondary = SubResource( 8 )
 anims/attack_special = SubResource( 9 )
-anims/die = SubResource( 17 )
-anims/fall = SubResource( 18 )
-anims/hurt = SubResource( 19 )
-anims/idle = SubResource( 20 )
-anims/jump = SubResource( 21 )
-anims/move = SubResource( 22 )
+anims/die = SubResource( 10 )
+anims/fall = SubResource( 11 )
+anims/hurt = SubResource( 12 )
+anims/idle = SubResource( 13 )
+anims/jump = SubResource( 14 )
+anims/move = SubResource( 15 )
 anims/wall_slide = SubResource( 16 )
 
 [node name="Service" type="Node" parent="."]
@@ -2105,9 +2105,9 @@ script = ExtResource( 16 )
 [connection signal="animation_finished" from="EffectAnimation" to="State/Hurt" method="_on_EffectAnimation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/Die" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/Hurt" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
 [connection signal="player_died" from="State/Die" to="." method="_on_Die_player_died"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
 

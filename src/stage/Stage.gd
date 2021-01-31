@@ -36,5 +36,4 @@ func _on_SceneLoader_on_finish_load():
 
 
 func _on_Player_on_die():
-	print('test player died')
 	get_tree().change_scene(game_over_scene.resource_path)

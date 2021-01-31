@@ -239,6 +239,7 @@ interact_alt={
 2d_physics/layer_7="hitbox"
 2d_physics/layer_8="hurtbox"
 2d_physics/layer_9="hazard"
+2d_physics/layer_10="player_attack"
 
 [rendering]
 
