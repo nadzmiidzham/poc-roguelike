@@ -3,6 +3,7 @@ extends State
 
 signal spawn_projectile()
 
+export(NodePath) var service_path
 export(String) var action_button := "attack_secondary"
 export(float) var timer_interval := 0.3
 export(Array) var combo = [
@@ -13,6 +14,7 @@ onready var combo_count := 0
 onready var combo_finished := false
 onready var animation_finished := true
 onready var timer_finished := false
+onready var service := get_node(service_path)
 
 var timer
 var animation
@@ -60,8 +62,10 @@ func process(_delta):
 		cur_animation_name = combo[combo_count].animation # play current attack combo animation
 		animation_finished = false # start a new animation
 		timer_finished = false # reset timer due to received input for next attack combo animation
+		service.consume_ep(5)
 		animation.play(cur_animation_name)
 		emit_signal("spawn_projectile")
+
 
 func _on_Animation_animation_finished(anim_name):
 	if anim_name == cur_animation_name:

@@ -1,6 +1,7 @@
 extends State
 
 
+export(NodePath) var service_path
 export(String) var action_button := "attack_special"
 export(float) var timer_interval := 0.3
 export(Array) var combo = [
@@ -11,6 +12,7 @@ onready var combo_count := 0
 onready var combo_finished := false
 onready var animation_finished := true
 onready var timer_finished := false
+onready var service := get_node(service_path)
 
 var timer
 var animation
@@ -49,7 +51,6 @@ func on_exit():
 
 func process(_delta):
 	combo_finished = timer_finished || (combo_count >= combo.size())
-
 	if combo_finished:
 		emit_signal("change_state", "previous")
 
@@ -58,6 +59,7 @@ func process(_delta):
 		cur_animation_name = combo[combo_count].animation # play current attack combo animation
 		animation_finished = false # start a new animation
 		timer_finished = false # reset timer due to received input for next attack combo animation
+		service.consume_ep(10)
 		animation.play(cur_animation_name)
 
 func push_forward(): # push player forward

@@ -41,6 +41,9 @@ func is_grounded():
 func is_touching_wall():
 	return front_check.is_colliding()
 
+func stat_changed() -> void:
+	emit_signal('on_stat_changed', service.get_stat())
+
 
 func _on_AttackSecondary_spawn_projectile():
 	var projectile_instance = projectile.instance()
@@ -60,7 +63,6 @@ func _on_HurtBox_on_damaged(value):
 		state_machine.trigger_die()
 	else:
 		state_machine.trigger_hurt()
-	emit_signal('on_stat_changed', service.get_stat())
 
 func _on_Die_player_died():
 	emit_signal('on_die')
