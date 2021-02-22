@@ -2077,6 +2077,7 @@ script = ExtResource( 14 )
 [node name="State" type="Node" parent="."]
 script = ExtResource( 4 )
 initial_state = NodePath("Idle")
+service_path = NodePath("../Service")
 
 [node name="Idle" type="Node" parent="State"]
 script = ExtResource( 3 )
@@ -2097,19 +2098,33 @@ script = ExtResource( 7 )
 
 [node name="AttackSecondary" type="Node" parent="State"]
 script = ExtResource( 9 )
+service_path = NodePath("../../Service")
+timer_interval = 2.0
+
+[node name="SecondaryCooldown" type="Timer" parent="State/AttackSecondary"]
+wait_time = 3.0
+one_shot = true
 
 [node name="AttackSpecial" type="Node" parent="State"]
 script = ExtResource( 16 )
+service_path = NodePath("../../Service")
+timer_interval = 6.0
+
+[node name="SpecialCooldown" type="Timer" parent="State/AttackSpecial"]
+wait_time = 3.0
+one_shot = true
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="on_damaged" from="HurtBox" to="." method="_on_HurtBox_on_damaged"]
 [connection signal="animation_finished" from="EffectAnimation" to="State/Hurt" method="_on_EffectAnimation_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="State/Die" method="_on_Animation_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="State/Hurt" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSecondary" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/Hurt" method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="State/Die" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackSpecial" method="_on_Animation_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="State/AttackBasic" method="_on_Animation_animation_finished"]
 [connection signal="player_died" from="State/Die" to="." method="_on_Die_player_died"]
 [connection signal="spawn_projectile" from="State/AttackSecondary" to="." method="_on_AttackSecondary_spawn_projectile"]
+[connection signal="timeout" from="State/AttackSecondary/SecondaryCooldown" to="State" method="_on_SecondaryCooldown_timeout"]
+[connection signal="timeout" from="State/AttackSpecial/SpecialCooldown" to="State" method="_on_SpecialCooldown_timeout"]
 
 [editable path="HitBox"]
 

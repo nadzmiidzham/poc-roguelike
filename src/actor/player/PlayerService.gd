@@ -13,12 +13,15 @@ func attack() -> float:
 
 func damaged(damage: float) -> float:
 	model.set_hp(model.hp - damage)
+	owner.stat_changed()
 	return model.hp
 
 func consume_ep(ep_cost: float) -> float:
 	model.set_ep(model.ep - ep_cost)
+	owner.stat_changed()
 	return model.ep
 
 func received_xp(value: int) -> int:
 	model.set_xp(model.xp + value)
+	owner.stat_changed()
 	return model.xp
