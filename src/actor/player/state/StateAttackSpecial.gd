@@ -13,6 +13,7 @@ onready var combo_finished := false
 onready var animation_finished := true
 onready var timer_finished := false
 onready var service := get_node(service_path)
+onready var special_cooldown := $SpecialCooldown
 
 var timer
 var animation
@@ -25,6 +26,8 @@ func _ready():
 	timer.one_shot = true
 	timer.wait_time = timer_interval
 	timer.connect("timeout", self, "_on_Timer_timeout")
+	special_cooldown.wait_time = timer_interval
+	special_cooldown.one_shot = true
 	add_child(timer)
 
 
@@ -71,6 +74,7 @@ func _on_Animation_animation_finished(anim_name):
 		animation_finished = true # notify attack animation has finished
 		owner.velocity.x = 0
 		timer.start() # start timer after attack animation finish to check for further attack input
+		special_cooldown.start()
 
 func _on_Timer_timeout():
 	if animation_finished:
