@@ -2,21 +2,20 @@ class_name State
 extends Node
 
 
-signal change_state(state_name)
+export (NodePath) var state_machine_path
+
+onready var state_machine := get_node(state_machine_path)
 
 
-func on_enter():
+func on_enter(data: Dictionary = {}) -> void:
 	pass
 
-func on_exit():
+func on_exit() -> void:
 	pass
 
 
-func process(_delta):
+func process(_delta) -> void:
 	pass
 
-func physics_process(_delta):
-	pass
-
-func input(_event):
+func physics_process(_delta) -> void:
 	pass

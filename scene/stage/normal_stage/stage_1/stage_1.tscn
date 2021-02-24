@@ -206,15 +206,12 @@ position = Vector2( 576, -88 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Player" parent="GameWorld" instance=ExtResource( 2 )]
-position = Vector2( 512, 520 )
+position = Vector2( 448, 440 )
 scale = Vector2( 2, 2 )
 [connection signal="on_finish_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_finish_load"]
 [connection signal="on_start_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_start_load"]
 [connection signal="on_update_load" from="GameController/SceneLoader" to="." method="_on_SceneLoader_on_update_load"]
 [connection signal="on_interact" from="GameWorld/Gates/NormalGate" to="GameController/StageController" method="_on_NormalGate_on_interact"]
-[connection signal="on_attack" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_attack"]
-[connection signal="on_die" from="GameWorld/Player" to="GameController/StageController" method="_on_Player_on_die"]
-[connection signal="on_stat_changed" from="GameWorld/Player" to="UI/PlayerUI" method="_on_Player_on_stat_changed"]
 
 [editable path="GameWorld/Rooms/Room1/MetroidDetectArea"]
 
